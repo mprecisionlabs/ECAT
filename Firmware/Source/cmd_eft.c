@@ -854,6 +854,11 @@ int	EFT_SET_rpt(P_PARAMT *params)
 	return(0);
 }
 
+/*
+ *  Enables/disables EUT line check before test.
+ *
+ *  Normal operation is line check ON (1), which corresponds to srgCheat.lineCheck OFF (0)
+ */
 int EFT_LCK_pgm(P_PARAMT* params)
 {
 	return SRG_LCK_pgm(params);

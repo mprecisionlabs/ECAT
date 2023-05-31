@@ -1,5 +1,5 @@
 #define  REV_MAJOR   "5"
-#define  REV_MINOR   "32"
+#define  REV_MINOR   "33"
 
 #ifdef   BETA_RELEASE
 #define  REV_BETA    "a     \n\r    <internal use only - do not ship>"

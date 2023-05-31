@@ -484,6 +484,17 @@ void	SRG_ChargeCheck(void)
 	chgdata.flag = CHG_READY;
 	SRG_UpdateSystem();
 	KEY_beep();
+
+	/* For the E52x only: disconnect the Spelman supply (RD27) once the system is in 'discharge ready' state */
+	switch ((moddata[(char)(srgdata.address)].modinfo.id))
+	{
+	case E521S_BOX:
+	case E522S_BOX:
+		*srgdata.relay &= ~RLY_RD27;
+		ECAT_WriteRelays(srgdata.address, *srgdata.relay);
+		TPU_delay(20);
+		break;
+	}
 }
 
 int	SRG_CHG_pgm(P_PARAMT *params)
@@ -1187,8 +1198,228 @@ int	SRG_LCK_pgm(P_PARAMT *params)
     return 0;
 }
 
-
 /**** SLOPE CALIBRATION CALCULATIONS ARE DONE HERE ****/
+
+/*
+*   This function applies common for all SRG units calibration adjustments and applies them to the supplied cal 
+*   factor and range offset if the data coupler is specified as the coupling type.
+*/
+void CAL_GetCommonSrgCalFactor(
+	int raw_voltage_absolute,
+	CALINFO* ci_wave,
+	uchar wave,
+	char cplType,
+	int* calValue,
+	uchar* rangeOff)
+{
+	*rangeOff = 0;
+	*calValue = CALIBRATION_NORM;
+
+	/* Retrieve calibration data point for this waveform/coupling mode/voltage */
+	switch (cplType)
+	{
+	case CPL_TYPELINE:
+	case CPL_TYPEHV:
+		*calValue = ci_wave->data[(WAVE_OFFSET + (FP_LINE_SIZE * wave) + LINE_OFFSET)];
+		break;
+	case CPL_TYPEDATA:
+		if (raw_voltage_absolute <= 625)
+			*rangeOff = 0;
+		else if (raw_voltage_absolute <= 850)
+			*rangeOff = 1;
+		else if (raw_voltage_absolute <= 1200)
+			*rangeOff = 2;
+		else if (raw_voltage_absolute <= 2000)
+			*rangeOff = 3;
+		else
+			*rangeOff = 4;
+		*calValue = ci_wave->data[(DATA_OFFSET + (DATA_SIZE * wave))];
+		break;
+	default:
+		*calValue = ci_wave->data[(WAVE_OFFSET + (FP_LINE_SIZE * wave) + FP_OFFSET)];
+		break;
+	}
+}
+
+#define CPL_INVALID          (0)
+#define CPL_4L_TO_PE         (25)
+#define CPL_3L_TO_PE         (33)
+#define CPL_2L_TO_PE         (50)
+#define CPL_1L_TO_PE         (100)
+#define CPL_3L_TO_L          (133)
+#define CPL_2L_TO_L          (150)
+#define CPL_1L_TO_L          (200)
+
+/*
+*   Calculates a value that identifies the coupling based on supplied HI-LO values.
+*/
+short CAL_GetCouplingValue(
+	uchar cpl_hi,
+	uchar cpl_lo)
+{
+	short lValue = CPL_INVALID;
+	if (cpl_hi & CPL_L1BIT)
+		lValue++;
+	if (cpl_hi & CPL_L2BIT)
+		lValue++;
+	if (cpl_hi & CPL_L3BIT)
+		lValue++;
+	if (cpl_hi & CPL_NUBIT)
+		lValue++;
+
+	if (lValue != 0)
+	{
+		lValue = 100 / lValue;
+		if (cpl_lo & CPL_PEBIT)
+			lValue += 0;
+		else
+			lValue += 100;
+	}
+
+	return lValue;
+}
+
+#define E503x_RANGE_SPLIT          3000    // for E503x cal adjustment
+#define E503x_POLARITY_OFFSET      (2)
+#define E503x_RANGE_OFFSET         (1)
+
+const uchar	E503Adjust[][2] =
+{
+	  E503x_CAL_POS_LO_FP_200A_v1,   E503x_CAL_POS_LO_FP_500A_v1,   /* 200A/500A POS LO */
+	  E503x_CAL_POS_HI_FP_200A_v1,   E503x_CAL_POS_HI_FP_500A_v1,   /* 200A/500A POS HI */
+	  E503x_CAL_NEG_LO_FP_200A_v1,   E503x_CAL_NEG_LO_FP_500A_v1,   /* 200A/500A NEG LO */
+	  E503x_CAL_NEG_HI_FP_200A_v1,   E503x_CAL_NEG_HI_FP_500A_v1,   /* 200A/500A NEG HI */
+};
+
+#define E503x_CPL_POLARITY_OFFSET    (3)
+#define E503x_CPL_L2N_OFFSET         (0)
+#define E503x_CPL_L2PE_OFFSET        (1)
+#define E503x_CPL_L2L_OFFSET         (2)
+
+const uchar	E503CplAdjust[][2] =
+{
+	  E503x_CAL_POS_L2N_200A_v1,    E503x_CAL_POS_L2N_500A_v1,    /* 200A/500A POS L-N */
+	  E503x_CAL_POS_L2PE_200A_v1,   E503x_CAL_POS_L2PE_500A_v1,   /* 200A/500A POS L-PE */
+	  E503x_CAL_POS_L2L_200A_v1,    E503x_CAL_POS_L2L_500A_v1,    /* 200A/500A POS L-L */
+	  E503x_CAL_NEG_L2N_200A_v1,    E503x_CAL_NEG_L2N_500A_v1,    /* 200A/500A NEG L-N */
+	  E503x_CAL_NEG_L2PE_200A_v1,   E503x_CAL_NEG_L2PE_500A_v1,   /* 200A/500A NEG L-PE */
+	  E503x_CAL_NEG_L2L_200A_v1,    E503x_CAL_NEG_L2L_500A_v1,    /* 200A/500A NEG L-L */
+};
+
+
+/*
+*   This function applies calibration adjustments to E503x boxes - there are quite a few more factors then normal SRG units.
+*/
+void CAL_GetE503xCalFactor(
+	int raw_voltage, 
+	uchar cpl_hi, 
+	uchar cpl_lo,
+	CALINFO* ci_wave, 
+	uchar wave, 
+	char cplType,
+	int* calValue,
+	uchar* rangeOff)
+{
+	int raw_voltage_absolute = abs(raw_voltage);
+	uchar offset = -1;
+	ushort cal_datum = 0;
+	uchar index = 0;
+	short calRev = (short)ci_wave->data[CAL_REV_OFF];
+
+	*rangeOff = 0;
+	*calValue = CALIBRATION_NORM;
+
+	if (wave > E503_500A)
+		wave = E503_500A;
+
+	/* Get the revision of the calibration data */
+	switch (calRev)
+	{
+	default:
+	case 0:
+		if (raw_voltage < 0)
+		{
+			/* rev 0 Negative adjustments */
+			switch (cplType)
+			{
+			case CPL_TYPELINE:
+			case CPL_TYPEHV:
+				if (srgdata.waveform == E503_500A)
+					offset = E503A_CAL_NEG_LINE_500A;
+				else  // assume srgdata.waveform == E503_200A
+					offset = E503A_CAL_NEG_LINE_200A;
+				break;
+			case CPL_TYPEDATA: // there is no Data Coupler, fallback to FP
+			default:  // front panel
+				if (srgdata.waveform == E503_500A)
+					offset = E503A_CAL_NEG_FP_500A;
+				else  // assume srgdata.waveform == E503_200A
+					offset = E503A_CAL_NEG_FP_200A;
+				break;
+			}
+
+			if (offset >= 0)
+			{
+				cal_datum = abs((short)ci_wave->data[offset]);  // normalize to positive value
+
+				/* Validate before committing to use - must be between 4000 V and 8000 V
+					- this special cal value is only for negative program voltages,
+						and is used in place of the generic cal value that all other modules use for both polarities */
+				if ((cal_datum >= E503A_CAL_VALUE_MIN) && (cal_datum <= E503A_CAL_VALUE_MAX))
+					*calValue = cal_datum;
+			}
+		}
+		else
+		{
+			/* rev 0 Positive adjustments - common surge adjustments */
+			CAL_GetCommonSrgCalFactor(
+				raw_voltage_absolute,
+				ci_wave,
+				wave,
+				cplType,
+				calValue,
+				rangeOff);
+		}
+		break;
+
+	case 1:
+		{
+			/* rev 1 calibration adjustments */
+			switch (cplType)
+			{
+			case CPL_TYPELINE:
+			case CPL_TYPEHV:
+				index = 0;
+				if (raw_voltage < 0) // POS-NEG
+					index += E503x_CPL_POLARITY_OFFSET;
+
+				if ((cpl_hi & CPL_L1BIT) || (cpl_hi & CPL_L2BIT) || (cpl_hi & CPL_L3BIT))
+				{
+
+				}
+
+
+				offset = E503CplAdjust[index][wave];
+				break;
+
+			case CPL_TYPEDATA: // there is no Data Coupler, fallback to FP
+			default:  // front panel
+				index = 0;
+				if (raw_voltage < 0) // POS-NEG
+					index += E503x_POLARITY_OFFSET;
+
+				if (raw_voltage_absolute >= E503x_RANGE_SPLIT) // HI-LO
+					index += E503x_RANGE_OFFSET;
+
+				offset = E503Adjust[index][wave];
+				break;
+			}
+
+			*calValue = abs((short)ci_wave->data[offset]);  // normalize to positive value
+		}
+		break;
+	}
+}
 
 /* 
 *       raw_voltage is the original voltage to be calibrated and otherwise adjusted.
@@ -1211,72 +1442,29 @@ int	CAL_GetCalibratedVoltage( int adjusted_voltage, int raw_voltage, int voltage
     int proportional_adjustment = 0;
 	uchar rangeOff;
 	uchar rangeIndex;
+	uchar E503x_box = ((netId == E503_BOX) || (netId == E503A_BOX)) ? TRUE : FALSE;
 
 	if(wave >= MAX_WAVEFORMS)
 		wave = 0;
 
-	rangeOff = 0;
-
-    /* Retrieve calibration data point for this waveform/coupling mode/voltage */
-	switch( cplType )
-	{
-		case CPL_TYPELINE:
-		case CPL_TYPEHV:
-			calValue = ci_wave->data[(WAVE_OFFSET+(FP_LINE_SIZE*wave)+LINE_OFFSET)];
-			break;
-		case CPL_TYPEDATA:
-			if ( raw_voltage_absolute <= 625 )
-                rangeOff = 0;
-			else if ( raw_voltage_absolute <= 850 )
-                rangeOff = 1;
-            else if ( raw_voltage_absolute <= 1200 )
-                rangeOff = 2;
-            else if ( raw_voltage_absolute <= 2000 )
-                rangeOff = 3;
-            else
-                rangeOff = 4;
-			calValue = ci_wave->data[(DATA_OFFSET+(DATA_SIZE*wave))];
-			break;
-        default:
-			calValue = ci_wave->data[(WAVE_OFFSET+(FP_LINE_SIZE*wave)+FP_OFFSET)];
-            break;
-	}
-
-    /* For E503A Negative polarity, use supplemental negative cal values if available */
-    if ( ( netId == E503A_BOX )
-      && ( raw_voltage != raw_voltage_absolute ) )
-    {
-        uchar offset = -1;
-        ushort cal_datum = 0;
-
-        switch ( cplType )
-        {
-            case CPL_TYPELINE:
-            case CPL_TYPEHV:
-                if ( srgdata.waveform == E503_500A )
-                    offset = E503A_CAL_NEG_LINE_500A;
-                else  // assume srgdata.waveform == E503_200A
-                    offset = E503A_CAL_NEG_LINE_200A;
-                break;
-            case CPL_TYPEDATA:
-            default:  // front panel
-                if ( srgdata.waveform == E503_500A )
-                    offset = E503A_CAL_NEG_FP_500A;
-                else  // assume srgdata.waveform == E503_200A
-                    offset = E503A_CAL_NEG_FP_200A;
-                break; 
-        }
-        if ( offset >= 0 )
-        {
-            cal_datum = abs((short)ci_wave->data[offset]);  // normalize to positive value
-
-            /* Validate before committing to use - must be between 4000 V and 8000 V
-                - this special cal value is only for negative program voltages,
-                    and is used in place of the generic cal value that all other modules use for both polarities */
-            if ( ( cal_datum >= E503A_CAL_VALUE_MIN ) && ( cal_datum <= E503A_CAL_VALUE_MAX ) )
-                calValue = cal_datum;
-        }
-    }
+	if (E503x_box)
+		CAL_GetE503xCalFactor(
+			raw_voltage,
+			cpl_hi,
+			cpl_lo,
+			ci_wave,
+			wave,
+			cplType,
+			&calValue,
+			&rangeOff);
+	else
+		CAL_GetCommonSrgCalFactor(
+			raw_voltage_absolute,
+			ci_wave,
+			wave,
+			cplType,
+			&calValue,
+			&rangeOff);
 
     /* Make coupling mode adjustments */
     adjValue = 100;  // default adjustment is no adjustment (100 %)
@@ -1285,35 +1473,17 @@ int	CAL_GetCalibratedVoltage( int adjusted_voltage, int raw_voltage, int voltage
       || ( cplType == CPL_TYPEHV )
       || ( cplType == CPL_TYPEDATA ) )
     {
-        lValue = 0;
-        if(cpl_hi & CPL_L1BIT)
-            lValue++;
-        if(cpl_hi & CPL_L2BIT)
-            lValue++;
-        if(cpl_hi & CPL_L3BIT)
-            lValue++;
-        if(cpl_hi & CPL_NUBIT)
-            lValue++;
-
-        if(lValue == 0)
-            return(0);
-
-        lValue = 100 / lValue;
-        if(cpl_lo & CPL_PEBIT)
-            lValue += 0;
-        else
-            lValue += 100;
-
+		lValue = CAL_GetCouplingValue(cpl_hi, cpl_lo);
         switch(lValue)
         {
-            case  25: lValue = 0; break;  // 4 lines to PE
-            case  33: lValue = 1; break;  // 3 lines to PE
-            case  50: lValue = 2; break;  // 2 lines to PE
-            case 133: lValue = 4; break;  // 3 lines to line
-            case 150: lValue = 5; break;  // 2 lines to line
-            case 200: lValue = 6; break;  // 1 line to line
-            case 100:                     // 1 line to PE (default case)
-            default:  lValue = 3; break;
+            case CPL_4L_TO_PE: lValue = 0; break;  // 4 lines to PE
+            case CPL_3L_TO_PE: lValue = 1; break;  // 3 lines to PE
+            case CPL_2L_TO_PE: lValue = 2; break;  // 2 lines to PE
+            case CPL_3L_TO_L:  lValue = 4; break;  // 3 lines to line
+            case CPL_2L_TO_L:  lValue = 5; break;  // 2 lines to line
+            case CPL_1L_TO_L:  lValue = 6; break;  // 1 line to line
+            case CPL_1L_TO_PE:                     // 1 line to PE (default case)
+            default:           lValue = 3; break;
         }
         if ( cplType == CPL_TYPEDATA )
         {
@@ -1370,9 +1540,9 @@ int	CAL_GetCalibratedVoltage( int adjusted_voltage, int raw_voltage, int voltage
         }
         else  // cplType != CPL_TYPEDATA
         {
-            /* For E503A line coupling modes, adjust program voltage by percentage specified in module cal data
+            /* For E503x line coupling modes, adjust program voltage by percentage specified in module cal data
                (other modules use fixed values from cplAdjust[] table in ecat.c). */
-            if ( netId == E503A_BOX )
+            if (E503x_box)
             {
                 uchar offset = -1;
                 uchar multiplier = 1;
@@ -1421,7 +1591,7 @@ int	CAL_GetCalibratedVoltage( int adjusted_voltage, int raw_voltage, int voltage
             }
         }
 
-        // All modules except E503A use fixed coupling adjustments from cplAdjust[] table in ecat.c
+        // All modules except E503x use fixed coupling adjustments from cplAdjust[] table in ecat.c
         if ( use_fixed_coupling_adjustments )
         {
             rangeIndex	= (uchar)((wavdata[(char)(netId)].wavinfo[(char)(wave)].rangeIndex[cplType]) + rangeOff);
@@ -1443,9 +1613,9 @@ int	CAL_GetCalibratedVoltage( int adjusted_voltage, int raw_voltage, int voltage
     adjusted_voltage = ( adjusted_voltage * calibration_factor ) / CALIBRATION_NORM;
 
     /* Apply supplemental calibration adjustments */
-    if ( netId == E503A_BOX )
+	if (E503x_box)
     {
-        /* For E503A, derate output at lower voltage settings (output:input ratio is higher at lower voltages).
+        /* For E503x, derate output at lower voltage settings (output:input ratio is higher at lower voltages).
            All coupling modes and both waveforms (200 A and 500 A) use the same compensation, which is the
            difference between two Gaussian curves (similar to a normal distribution curve).  This provides
            minimal compensation at higher voltages (both polarities), with increasing compensation down to
