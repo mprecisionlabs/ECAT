@@ -1,0 +1,44 @@
+TITLE Keytek Fiberloop/Peak Det Board PAL V1.0
+PATTERN GOOD
+REVISION A
+AUTHOR Paul Breed
+COMPANY KEYTEK
+DATE 07-07-92
+
+
+CHIP GOOD PAL16V8
+;Pin # 1   2       3   4   5     6    7   8   9   10
+      CLK PALSEL  RNW  A15 A14  A13  A12  A11 I8 GND
+
+;Pin # 11  12    13  14    15    16    17    18   19   20
+       I9 LOS0  LOS1 LOS2 LOS3  LOS4  LOS5   LIR LDCLK VCC
+EQUATIONS								;RNW A15 A14 A13 LOS0 LOS1 LOS2 LOS3 LOS4 LOS5 LDCLK LIR
+LOS0=/LOS5+PALSEL+A15+A14+A13			; X   0   0   0    0    1    1    1    1    1    1    1
+LOS1=/LOS5+PALSEL+A15+A14+/A13			; X   0   0   1    1    0    1    1    1    1    1    1
+LOS2=/LOS5+PALSEL+A15+/A14+A13+RNW		; X   0   1   0    1    1    0    1    1    1    1    1
+LOS3=/LOS5+PALSEL+A15+/A14+/A13		; X   0   1   1    1    1    1    0    1    1    1    1
+LOS4=/LOS5+PALSEL+/A15+A14+A13			; X   1   0   0    1    1    1    1    0    1    1    1
+LOS5:=((/A15+A14+/A13)*LOS5)+(A15*/A14*A13*RNW)
+LIR =/LOS5+PALSEL+/A15+/A14+A13+/RNW	; 1   1   1   1    1    1    1    1    1    1    1    0
+LDCLK=/LOS5+PALSEL+/A15+/A14+A13+RNW	; 0   1   1   1    1    1    1    1    1    1    0    1
+
+
+
+SIMULATION
+SETF /PALSEL
+SETF RNW /A15 /A14 /A13
+SETF RNW /A15 /A14 /A13
+SETF  A13
+SETF  A13
+SETF /A13 A14
+SETF /A13 A14
+SETF  A13
+SETF  A13
+SETF /A13 /A14 A15
+SETF /A13 /A14 A15
+SETF  A13
+SETF  A13
+SETF /A13 A14
+SETF /A13 A14
+SETF /RNW
+SETF /RNW

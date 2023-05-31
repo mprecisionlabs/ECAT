@@ -1,0 +1,131 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	WorkingDir="./">
+	<Config
+		Name="Release"
+		OutputFile=""
+		CompilerConfigName="MRI-ECAT">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				ClearProcessBuffer="1">
+				<Exec CmdLine="build-main.bat FULL"/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				ClearProcessBuffer="1"
+				Verbose="1">
+				<Exec CmdLine="build-main.bat RELEASE"/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw"
+				ShowOnMenu="Never">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				RunFromDir="%rw"
+				ShowOnMenu="Never">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine="cmd.exe /c  romprog-ECAT.bat"/>
+			</Target>
+		</Menu>
+		<Includes>
+		</Includes>
+	</Config>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl">
+			<F N="Source/acrms.c"/>
+			<F N="Source/acrms.h"/>
+			<F N="Source/ad_trap.src"/>
+			<F N="Source/ads_trap.src"/>
+			<F N="Source/buffer.h"/>
+			<F N="Source/cmd_bay.c"/>
+			<F N="Source/cmd_data.c"/>
+			<F N="Source/cmd_eft.c"/>
+			<F N="Source/cmd_li.c"/>
+			<F N="Source/cmd_meas.c"/>
+			<F N="Source/cmd_root.c"/>
+			<F N="Source/cmd_srg.c"/>
+			<F N="Source/csel.c"/>
+			<F N="Source/data.h"/>
+			<F N="Source/display.h"/>
+			<F N="Source/duart.h"/>
+			<F N="Source/ecat.c"/>
+			<F N="Source/ecat.h"/>
+			<F N="Source/eft.h"/>
+			<F N="Source/ehv.c"/>
+			<F N="Source/ehv.h"/>
+			<F N="Source/emc.h"/>
+			<F N="Source/field.h"/>
+			<F N="Source/fixit.src"/>
+			<F N="Source/fp_eft.c"/>
+			<F N="Source/fp_main.c"/>
+			<F N="Source/fp_pqf.c"/>
+			<F N="Source/fp_srg.c"/>
+			<F N="Source/front.c"/>
+			<F N="Source/front.h"/>
+			<F N="Source/gpib.h"/>
+			<F N="Source/intface.c"/>
+			<F N="Source/intface.h"/>
+			<F N="Source/key.h"/>
+			<F N="Source/krnl_eft.c"/>
+			<F N="Source/krnl_emc.c"/>
+			<F N="Source/krnl_pqf.c"/>
+			<F N="Source/krnl_srg.c"/>
+			<F N="Source/lpray.c"/>
+			<F N="Source/module.h"/>
+			<F N="Source/parser.h"/>
+			<F N="Source/period.h"/>
+			<F N="Source/pqf.h"/>
+			<F N="Source/qsm.h"/>
+			<F N="Source/rev.h"/>
+			<F N="Source/serint.h"/>
+			<F N="Source/startup.src"/>
+			<F N="Source/switches.h"/>
+			<F N="Source/timer.h"/>
+			<F N="Source/tiocntl.c"/>
+			<F N="Source/tiocntl.h"/>
+			<F N="Source/vectors.h"/>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters="">
+			<F N="Tools/rom.cmd"/>
+		</Folder>
+	</Files>
+</Project>

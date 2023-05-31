@@ -1,0 +1,177 @@
+;	Microtec(R) Research Inc. 68K C Compiler 4.1E
+;	Host Operating System - MS-DOS
+;	Command Line Options Specified:
+;		-RiC:\MCC68K\TMP\ad_trap.1 -Fsm -JC:\MCC68K\BIN ad_trap.c 
+
+	TTL	ad_trap.c
+;	MCC68K 4.1E   MS111590 ms0b01a
+	OPT	NOABSPCADD,E,CASE
+	NAME	ad_trap
+	XREF	_STARTING
+	XREF	_RMS_PEAKP	; peak plus
+	XREF	_RMS_PEAKM	; peak minus
+	XREF	_LIN_RMS_ZERO	; line in  DC component
+	XREF	_RMS_ZERO	; line out DC component
+	XREF	_slope_cnt	 
+	XREF	_adtotal_cnt	
+	XREF	_IN_RMS_SUM	; public line in  RMS sum (result of cycle calc.)
+	XREF	_LIN_RMS_SUM	;        line in  RMS sum
+	XREF	_PUB_RMS_SUM	; public line out RMS sum (result of cycle calc.)
+	XREF	_RMS_SUM	;        line out RMS sum
+	XREF	_PUB_RMS_N	; public number of addends of RMS sum
+	XREF	_RMS_N		;	 number of addends of RMS sum
+	XREF	_AD_CH		; line out channel + BIPP
+	XREF	_RMSCNTR
+        XREF    _ADADD		; ADC_CONTROL + (bay * 0x1000) - ADC addr
+        XREF    _ADCMPL		
+        XREF    _LASTM		; last value, read from line out channel 
+        XREF    _MINPEAK	; peak minus limit
+        XREF    _MAXPEAK	; peak plus  limit
+        XREF    _RMSCNT		; cycle count
+        XREF    _LIMITHIT	; 1- plus limit hit, 2 - minus limit hit
+        XREF    _VAL_LIMITHIT	; over limit value
+        XREF    _STEP_LIMIT	; active step (PQF), when limit hit 
+        XREF    _Active_Step
+ 
+	SECTION code,,C
+	XDEF	_ADRMS_trap
+_ADRMS_trap:
+	movem.l	a0/a1/d0/d1/d2,-(sp)
+;setleds(0xF3);
+	movea.l	#262144,a1
+	move.b	#12,(a1)
+;{
+; adn=ECAT_MAX180Read(0);
+	movea.l	_ADADD,a0   ; A0 = ADC addr
+        moveq   #0,d2
+	move.w	(a0),d2	    ; read line in A/D value from channel  7 
+	move.w	_AD_CH,(a0) ; Start the next conversion (AD_CH=BIPP+chan)
+        andi.w  #4095,d2
+; if (adn & 0x0800) adn|=~(0x0FFF);
+        BTST    #11,D2		      ; ADC reading is 12 bits
+	beq.s	L2
+	ori.l	#-4096,d2
+L2:
+;At this time D2 holds the line in A/D value in a signed form from -2048 to 2047
+; RMS_ZERO.RMS_ZERO-=(RMS_ZERO.ZEROM);
+	moveq	#0,d0		     ;d0= 0000 0000
+	move.w	_LIN_RMS_ZERO,d0     ;d0= 0000 RMS_ZERO
+        ext.l   d0		     ;d0= SSSS RMS_ZERO
+	sub.l	d0,_LIN_RMS_ZERO     ;RMS_ZERO-=RMS_ZERO/0x10000
+; RMS_ZERO.RMS_ZERO+=adn;	     ;
+	add.l	d2,_LIN_RMS_ZERO     ;RMS_ZERO+=adn
+;adn=adn-RMS_zero		     ;RMS_ZERO now = Avg(adn)*0x10000
+        sub.l   d0,d2
+;d2 now holds the line in A/D value corrected for offset
+
+
+; if ((adn>0) && (slope_cnt<8))
+        tst.l d2
+	ble.s	L6
+	moveq	#10,d0
+	cmp.l	_slope_cnt,d0
+	ble.s	L6	  
+; {slope_cnt++;
+	addq.l	#1,_slope_cnt
+;  if (slope_cnt==0)		/* (adn>0) && (slope_cnt==0) - new cycle */
+	tst.l	_slope_cnt
+	bne.s	L5
+;   {PUB_RMS_SUM=RMS_SUM;
+;    RMS_SUM=0;
+;    PUB_RMS_N=RMS_N;
+;    RMS_N=0;
+;    IN_RMS_SUM=LIN_RMS_SUM;
+;    LIN_RMS_SUM=0; 
+;    RMSCNT++;
+;
+        move.l  _RMS_SUM,D0
+	move.l	D0,_PUB_RMS_SUM
+	clr.l	_RMS_SUM
+	move.l	_LIN_RMS_SUM,_IN_RMS_SUM
+	clr.l	_LIN_RMS_SUM
+        move.l	_RMS_N,_PUB_RMS_N
+        addq.l  #1,_RMSCNT
+	clr.l	_RMS_N
+	bra.s	L5
+;   }
+;  }
+; else
+; if ((adn<RMS_ZERO.ZEROM) && (slope_cnt>-10)) slope_cnt--;
+L6:     tst.l d2
+	bge.s	L5
+	moveq	#-10,d0
+	cmp.l	_slope_cnt,d0
+	bge.s	L5
+	subq.l	#1,_slope_cnt
+; adn=(adn-RMS_ZERO.ZEROM);
+L5:
+; LIN_RMS_SUM+=adn*adn;
+	move.l	d2,d0 
+        muls.w  d2,d0 
+	add.l	d0,_LIN_RMS_SUM 
+; RMS_N++;
+	addq.l	#1,_RMS_N
+
+        moveq   #0,d2
+        move.w  _LASTM,D2	 	; LASTM = value, read from AD_CH
+        andi.w  #4095,d2
+; if (adn & 0x0800) adn|=~(0x0FFF);
+        BTST    #11,D2
+	beq.s	L2V
+	ori.l	#-4096,d2
+L2V:
+;At this time D2 holds the line out A/D value in a signed form form -2048 to 2047
+; RMS_ZERO.RMS_ZERO-=(RMS_ZERO.ZEROM);
+	moveq	#0,d0
+	move.w	_RMS_ZERO,d0
+        ext.l   d0
+	sub.l	d0,_RMS_ZERO
+; RMS_ZERO.RMS_ZERO+=adn;
+	add.l	d2,_RMS_ZERO
+;adn=adn-RMS_zero
+        sub.l   d0,d2
+;d2 now holds the line out A/D value corrected for offset
+; _RMS_SUM+=adn*adn;
+	move.l	d2,d0 
+        muls.w  d2,d0 
+	add.l	d0,_RMS_SUM 
+
+; if (adn>RMS_PEAKP) RMS_PEAKP=adn;    	; reak plus
+	cmp.l	_RMS_PEAKP,d2
+	ble.s	L3A
+	move.l	d2,_RMS_PEAKP
+L3A:    cmp.l  _MAXPEAK,d2
+        ble.s   L3
+        move.l #1,_LIMITHIT
+        move.l D2,_VAL_LIMITHIT
+        move.l _Active_Step,_STEP_LIMIT
+
+; if (adn<RMS_PEAKM) RMS_PEAKM=adn;	; reak minus
+L3:
+	cmp.l	_RMS_PEAKM,d2
+	bge.s	L4A
+	move.l	d2,_RMS_PEAKM
+L4A:    cmp.l  _MINPEAK,d2
+        bge.s   L4
+        move.l #2,_LIMITHIT
+        move.l D2,_VAL_LIMITHIT
+        move.l _Active_Step,_STEP_LIMIT
+L4:
+	move.w	(a0),_LASTM	     ; read line out A/D value from channel AD_CH
+       ; adn=ECAT_MAX180Read(0);
+	move.w	#15,(a0) 	     ;Start Next. Channel 7 ? (15 = 7 + BIPP)
+	addq.l	#1,_adtotal_cnt
+;return;
+;}
+	movem.l	(sp)+,a0/a1/d0/d1/d2
+	rte
+	XDEF	_ADRMS_END
+_ADRMS_END:
+
+	END
+
+
+
+
+
+                          

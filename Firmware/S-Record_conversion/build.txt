@@ -1,0 +1,11 @@
+Building the S-record conversion utilities
+------------------------------------------
+
+These utilities are built using the MinGW tools.
+
+From the MinGW website (http://www.mingw.org/):  MinGW is a collection of 
+freely available and freely distributable Windows specific header files 
+and import libraries combined with GNU toolsets that allow one to produce 
+native Windows programs that do not rely on any 3rd-party C runtime DLLs.
+
+FSD  2007 June

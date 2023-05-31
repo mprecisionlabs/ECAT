@@ -1,0 +1,43 @@
+E505B Relay Control
+-------------------
+The E505B is very similar in function to the E505A, except that it has a built-in coupler/decoupler (CDN) for the 2.5 kV waveform and some of the relay functions have been changed.  For the E505B:
+
+         |--------- Output ----------|
+         |        Built-in   External|
+Waveform |Direct  CDN        CDN     |
+-------- |------  --------   --------|
+800 V     Yes     No         No
+1500 V    Yes     No         No
+2500 V    No      Yes        No
+
+Relay functions are also different between the E505B and the E505A.  Following is the comprehensive list of relays used in the E505B module:
+
+Relay
+Driver  Relay       Function                Activate        Usage
+------  -----       --------                --------        -----
+  00                Vmon HIGH Ch A          At user select  ON for Front Panel output, otherwise OFF
+  02                Vmon HIGH Ch C          At user select  ON for CDN output, otherwise OFF
+  06                Vmon LOW Ch B           At user select  ON if this module is the measurement source
+  10                Imon Ch 1               At user select  ON for Front Panel output, otherwise OFF
+  11                Imon Ch 2               At user select  ON for CDN output, otherwise OFF
+  15                Measurement Enable      At user select  ON if this module is the measurement source
+  16                Voltage Present LED     Pre-charge      ON if this module is the charge source
+  17                Module Active LED       At user select  ON if this module is the charge source
+  18     K8         Dump                    Post-fire       Charge cap dump
+  19     K1A/K2A    Polarity Select         Pre-charge      ON for Positive polarity, otherwise OFF
+  20     K1B/K2B    Polarity Select         Pre-charge      ON for Negative polarity, otherwise OFF
+  21     K5A        K5 (Surge) Select       Pre-charge      ON for 1.5 kV waveform, otherwise OFF
+  22     K5B        K5 (Surge) Select       Pre-charge      ON for 800 V waveform, otherwise OFF
+  23     K1         FP/CDN LED Select       At user select  OFF for Front Panel output, ON for CDN output
+  24     K6         CDN Select              Pre-fire        ON for CDN output, otherwise OFF
+  25     K5         Surge                   At fire         Surge fire
+  26     K11        Front Panel Isolation   Pre-fire        ON for Front Panel output, otherwise OFF
+  27     K3         FP Waveform Select      Pre-charge      ON for 1.5 kV waveform, otherwise OFF
+  28     K10        FP Waveform Select      Pre-charge      ON for 800 V waveform, otherwise OFF
+  29     ---        Not used
+  30     ---        Not used
+  31     ---        Not used
+
+___________________________________
+
+Frank Snyder Di Cesare  07 Feb 2011

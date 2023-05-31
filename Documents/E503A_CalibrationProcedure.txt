@@ -1,0 +1,150 @@
+E503A Calibration Procedure             FSD  12 Dec 2013
+                                        FSD  15 May 2014 updated
+                                        FSD  15 Oct 2015 updated
+----------------------------------------------------------------
+
+1.  This document should be used as the basis for creating the new document
+    "90-503-009-01-A E503A Calibration Work Instruction".
+
+2.  All external references are to the document
+    "90-503-009-00-A E503 Calibration Verification Work Instruction", hereafter
+    referred to as "E503-CAL", which at the time of this writing is located in
+    directory "\\uswil-speng01\17025\Laboratory-Management-System\Procedures and
+    Work Instructions\17025 & NIST Calibration Procedures".
+
+3.  The following steps must be performed in the specified order.
+    If it is necessary to repeat an earlier step, then all steps following the
+    repeated step must also be repeated in the same order.
+
+4.  If significant adjustments are required for any step (particularly to
+    hardware for short circuit current or waveform timing), it may be necessary
+    to repeat some or all of the previous steps.
+
+5.  Complete the E503-CAL as far as Step #1.
+
+6.  Adjust the following to within the specified tolerances at both 500 V
+    and 6000 V, IN THE SPECIFIED ORDER
+    - note that the "L1/PE" mode indicates the "LINE Coupler" calibration adjustment,
+        and "FP" indicates the "Front Panel" adjustment
+    - SCI is "Short Circuit Current"
+    - this can be done via the ECAT front panel, or with EvaluWave
+
+        Waveform    Mode    Adjustment  Refer to this step in E503-CAL
+        --------    ----    ----------  ------------------------------
+        500 A       L1/PE   Voltage     Step #1 "Calibration Constants"
+        500 A       L1/PE   Waveform    Step #2 "Risetimes"
+        500 A       L1/PE   SCI         Step #3 "SCI"
+
+        200 A       L1/PE   Voltage     Step #1 "Calibration Constants"
+        200 A       L1/PE   Waveform    Step #2 "Risetimes"
+        200 A       L1/PE   SCI         Step #3 "SCI"
+
+        500 A       FP      Voltage     Step #1 "Calibration Constants"
+        500 A       FP      Waveform    Step #2 "Risetimes"
+        500 A       FP      SCI         Step #3 "SCI"
+
+        200 A       FP      Voltage     Step #1 "Calibration Constants"
+        200 A       FP      Waveform    Step #2 "Risetimes"
+        200 A       FP      SCI         Step #3 "SCI"
+
+7.  The remaining calibration adjustments require either EvaluWave or SurgeWare
+    to enter and store the calibration data to the E503A module.
+
+8.  Set the four baseline calibration values for Negative Front Panel and
+    Negative Line Coupler to their corresponding Positive Cal Values.  That is,
+    set 200 A Front Panel Negative to the same value as 200 A Front Panel
+    Positive, etc.
+
+        For EvaluWave:
+            Set "Front Panel (WF 0; negative)" to the value in "Front Panel (WF 0)"
+            Set "Line Coupler (WF 0; negative)" to the value of "Line Coupler (WF 0)"
+            Set "Front Panel (WF 1; negative)" to the value of "Front Panel (WF 1)"
+            Set "Line Coupler (WF 1; negative)" to the value of "Line Coupler (WF 1)"
+        
+        For SurgeWare:
+            Set CAL[18] to the value at CAL[3] (200 A, Front Panel)
+            Set CAL[19] to the value at CAL[4] (200 A, Line Coupler)
+            Set CAL[20] to the value at CAL[5] (500 A, Front Panel)
+            Set CAL[21] to the value at CAL[6] (500 A, Line Coupler)
+
+11. Adjust the following NEGATIVE voltage outputs to within the specified
+    tolerances at both 500 V and 6000 V
+    - refer to E503-CAL Step #1 "Calibration Constants"
+    - note that the adjustment voltages are entered as POSITIVE values,
+        just like the Positive calibration adjustment values
+
+        Waveform  Mode    EvaluWave table entry       SurgeWare CAL table index
+        --------  ----    ---------------------       -------------------------
+        200 A     FP      Front Panel (WF 0; negative)  18
+        200 A     L1/PE   Line Coupler (WF 0; negative) 19
+        500 A     FP      Front Panel (WF 1; negative)  20
+        500 A     L1/PE   Line Coupler (WF 1; negative) 21
+
+12. For both the 200A and 500A waveforms, set Coupling Mode to L1-L2/PE
+    (Two Lines to Ground) and measure voltage at 6000V.  Enter the error in the
+    appropriate table location:
+
+        Waveform  Mode    EvaluWave table entry       SurgeWare CAL table index
+        --------  ----    ---------------------       -------------------------
+        200 A     L1-L2/PE  Two Lines -> PE (WF0)       22 (as TENTHS OF PERCENT)
+        500 A     L1-L2/PE  Two Lines -> PE (WF1)       24 (as TENTHS OF PERCENT)
+
+    - iteratively adjust as required
+    - error calculation example for measured voltage of 5650 V:
+                6000 - 5650
+        Error = ----------- = 0.058 = 5.8%
+                   6000
+    - most errors will be positive percentage values (to boost the voltage)
+    - for SurgeWare ONLY:
+        - 5.8% is 58 'tenths of a percent', so enter '58' into the CAL table
+        - negative error values are entered as (65536 - value), so -5.8%
+            would be (65536 - 58) = '65478'
+    
+13. For both the 200A and 500A waveforms, set Coupling Mode to L1/L2
+    (One Line to Line) and measure voltage at 6000V.  Enter the error in the
+    appropriate table location:
+    
+        Waveform  Mode    EvaluWave table entry       SurgeWare CAL table index
+        --------  ----    ---------------------       -------------------------
+        200 A     L1/L2   Line -> Line (WF 0)           23 (as TENTHS OF PERCENT)
+        500 A     L1/L2   Line -> Line (WF 1)           25 (as TENTHS OF PERCENT)
+
+    - iteratively adjust as required
+    - refer to previous step (Two Lines to Ground) for error calculation
+        and data entry instructions
+
+14.  Complete E503-CAL Step #4, "Line Sync Calibration"
+
+15. Verify calibration settings at all specified voltage and coupling mode
+    combinations using EvaluWave
+    - ref Steps #5 and #7 in E503-CAL (there is NO Step #6!)
+    
+16. The Addendum in E503-CAL is also valid for E503A.
+
+17. The following "E503A Supplemental CAL Table Reference" specifically refers
+    to the locations in the SurgeWare CAL table that the E503A supplemental
+    calibration adjustments are located, which correlates with their placement
+    in the E503A module serial EEPROM.
+
+
+===========================================================
+          E503A Supplemental CAL Table Reference
+===========================================================
+
+     CAL
+    Index   Unit    Polarity    Description
+    -----   ----    --------    -----------
+
+     18     Volt       +        Negative Front Panel, 200A
+     19     Volt       +        Negative Line Coupler, 200A
+
+     20     Volt       +        Negative Front Panel, 500A
+     21     Volt       +        Negative Line Coupler, 500A
+
+     22     1/10%     +/-       Two Lines to PE, 200A
+     23     1/10%     +/-       One Line to Line, 200A
+
+     24     1/10%     +/-       Two Lines to PE, 500A
+     25     1/10%     +/-       One Line to Line, 500A
+
+    Note that this reference applies to the E503A ONLY.

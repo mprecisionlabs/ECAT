@@ -1,0 +1,26 @@
+Microtec Research 68K Linker  Version 7.1J    Wed Dec 02 09:27:57 2009    Page   1
+
+Command line: C:\ECAT\NewDev\mri\asm68k\lnk68k.exe  -l.\library\keytek.lib -l.\MRI\OlderLibraries\lib\68000\mcc68kab.lib -crom.cmd -
+oupdate.abs -m 
+
+;
+;     MCC68K V4 Default Linker Command File
+;
+chip 68332
+listmap  publics,internals,crossref
+format      s
+resmem      $0000,$9000                   ; Reserve stack area
+sect     vars=$9010
+sect     SETCS=$80000
+order    vars,zerovars,ioports,heap       ; RAM sections
+order    SETCS,code,literals,strings,const   ; ROM code
+order    ??INITDATA                    ; ROM section for init values
+extern   ENTRY
+load     startup.obj
+FATAL ERROR: (A319) Cannot Open File startup.obj
+
+
+WARNING: (A311) Link Not Completed 
+
+
+ Errors: 1, Warnings: 1

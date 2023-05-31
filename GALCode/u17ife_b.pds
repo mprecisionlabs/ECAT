@@ -1,0 +1,26 @@
+TITLE		KeyTek EFT Interface Board Timer Process Controller
+PATTERN		GOOD
+REVISION	B
+AUTHOR		Paul Breed
+COMPANY		KeyTek Instrument Corp
+DATE			October 23, 1992
+
+; This GAL is used to control the RAM/TIMING subsection on EFT
+; interface boards
+
+
+CHIP GOOD PAL16V8
+;Pin #1      2      3      4      5      6      7      8      9      10
+      CLK    EOC    TPUIN  /WR    S0     S1     S2     S3     S4     GND
+
+;Pin #11     12     13     14     15     16     17     18     19     20
+      CLKX   /CLR   /CLKEN /RAMOE /RAMWE /LCLOE OCLK   TP5    CLKMUx VCC
+
+EQUATIONS
+CLKEN	= S4+(/S0*S1)+S2*((TPUIN*/S0*/S1)+((/EOC)*S1*S0)+((/EOC)*TPUIN*S0*/S1))
+RAMOE	= S2*(/S4)
+RAMWE	= (WR*S1*S0*/S2)+S4
+LCLOE	= S4+(/S2*((S1*S1)+(/S1*/S0)))
+CLR		= (/S4)*((/S2*/S1*S0)+(S2*/S0*EOC))
+OCLK		= (/S4)*((/S2*/S1*/S0*TPUIN)+(S2*(/CLKX)))
+CLKMUx	= GND

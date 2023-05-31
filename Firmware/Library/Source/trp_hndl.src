@@ -1,0 +1,312 @@
+;	Microtec(R) Research Inc. 68K C Compiler 4.1E
+;	Host Operating System - MS-DOS
+;	Command Line Options Specified:
+;		-Rif:trp_hndl.1 -nQ -Xp -A -Fsm -JX:\MRI trp_hndl.c 
+
+	TTL	trp_hndl.c
+;	MCC68K 4.1E   MS111590 ms0b01a
+	OPT	NOABSPCADD,E,CASE
+	NAME	trp_hndl
+	SECTION zerovars,,D
+	XDEF	_eptr
+_eptr	DS.B	4
+	XDEF	_regs
+_regs	DS.B	64
+	XDEF	_stkcnt
+_stkcnt	DS.B	2
+	XREF	_QILR_QIVR
+;	XREF	_back_channel
+	XREF	_int_active
+	SECTION strings,,R
+_.S14:	DC.B	'SP[%02X] = %04X',10,13,0
+_.S13:	DC.B	'Stack (SP) = %X',10,13,0
+_.S12:	DC.B	'A4 = %08X   A5 = %08X   A6 = %08X   A7 = %08X',10,13,0
+_.S11:	DC.B	'A0 = %08X   A1 = %08X   A2 = %08X   A3 = %08X',10,13,0
+_.S10:	DC.B	'D4 = %08X   D5 = %08X   D6 = %08X   D7 = %08X',10,13,0
+_.S9:	DC.B	'D0 = %08X   D1 = %08X   D2 = %08X   D3 = %08X',10,13,0
+_.S8:	DC.B	'Curr PC=%04X%04X  Cnt Reg=%04X',10,13,0
+	DS	0
+_.S7:	DC.B	'SSW=%04X  Fault Addr=%04X%04X  data=%04X%04X  ',0
+	DS	0
+_.S6:	DC.B	'Format/Vector=%04X',10,0
+_.S5:	DC.B	'Bus Error',10,13,0
+_.S4:	DC.B	'Format/Vector=%04X',10,0
+_.S3:	DC.B	'Six Word',10,13,0
+	DS	0
+_.S2:	DC.B	'Format/Vector=%04X',10,0
+_.S1:	DC.B	'Four Word',10,13,0
+_.S0:	DC.B	'Exception: ',0
+	SECTION code,,C
+	XREF	_printf
+;#include "switches.h"
+;
+;unsigned short	*eptr;
+;unsigned int		*regs[16];
+;unsigned short	stkcnt;
+;
+;extern volatile unsigned short	QILR_QIVR;
+;extern unsigned char	int_active;
+;extern unsigned char	back_channel;
+;
+;
+;void badtrap(void)
+;{
+	XDEF	_badtrap
+_badtrap:
+;*** allocation of local variables ***
+;	regs[0]	= (unsigned int *)asm("  tst d0");
+  tst d0
+	move.l	d0,_regs
+;	regs[1]	= (unsigned int *)asm("  move.l d1,d0");
+  move.l d1,d0
+	move.l	d0,_regs+4
+;	regs[2]	= (unsigned int *)asm("  move.l d2,d0");
+  move.l d2,d0
+	move.l	d0,_regs+8
+;	regs[3]	= (unsigned int *)asm("  move.l d3,d0");
+  move.l d3,d0
+	move.l	d0,_regs+12
+;	regs[4]	= (unsigned int *)asm("  move.l d4,d0");
+  move.l d4,d0
+	move.l	d0,_regs+16
+;	regs[5]	= (unsigned int *)asm("  move.l d5,d0");
+  move.l d5,d0
+	move.l	d0,_regs+20
+;	regs[6]	= (unsigned int *)asm("  move.l d6,d0");
+  move.l d6,d0
+	move.l	d0,_regs+24
+;	regs[7]	= (unsigned int *)asm("  move.l d7,d0");
+  move.l d7,d0
+	move.l	d0,_regs+28
+;	regs[8]	= (unsigned int *)asm("  move.l a0,d0");
+  move.l a0,d0
+	move.l	d0,_regs+32
+;	regs[9]	= (unsigned int *)asm("  move.l a1,d0");
+  move.l a1,d0
+	move.l	d0,_regs+36
+;	regs[10]	= (unsigned int *)asm("  move.l a2,d0");
+  move.l a2,d0
+	move.l	d0,_regs+40
+;	regs[11]	= (unsigned int *)asm("  move.l a3,d0");
+  move.l a3,d0
+	move.l	d0,_regs+44
+;	regs[12]	= (unsigned int *)asm("  move.l a4,d0");
+  move.l a4,d0
+	move.l	d0,_regs+48
+;	regs[13]	= (unsigned int *)asm("  move.l a5,d0");
+  move.l a5,d0
+	move.l	d0,_regs+52
+;	regs[14]	= (unsigned int *)asm("  move.l a6,d0");
+  move.l a6,d0
+	move.l	d0,_regs+56
+;	regs[15]	= (unsigned int *)asm("  move.l a7,d0");
+  move.l a7,d0
+	move.l	d0,_regs+60
+;
+;	eptr = (unsigned short *)asm("  move.l a7,d0");
+  move.l a7,d0
+	move.l	d0,_eptr
+;	QILR_QIVR = 0;
+	clr.w	_QILR_QIVR
+;	back_channel = 1;
+;	move.b	#1,_back_channel
+;	int_active = 0;
+	clr.b	_int_active
+;	printf("Exception: ");
+	pea	_.S0
+	jsr	_printf
+	addq.l	#4,sp
+;#define	SNUFF
+;#ifdef	SNUFF
+;	switch((*(eptr+0x03))&0xF000)
+	movea.l	_eptr,a0
+	move.w	6(a0),d0
+	andi.l	#61440,d0
+	tst.l	d0
+	beq.s	L20000
+	cmpi.l	#8192,d0
+	beq.s	L20001
+	cmpi.l	#49152,d0
+	beq.s	L20002
+	bra.l	L1
+;	{
+;		case 0x0000:	/* Format $0 - Four Word Stack Frame	*/
+;			printf("Four Word\n\r");
+L20000:
+	pea	_.S1
+	jsr	_printf
+	addq.l	#4,sp
+;			printf("Format/Vector=%04X\n",*(eptr+0x03));
+	movea.l	_eptr,a0
+	move.w	6(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	pea	_.S2
+L28000:
+	jsr	_printf
+	addq.l	#8,sp
+;			break;
+	bra.l	L1
+;		case 0x2000:	/* Format $2 - Six Word Stack Frame		*/
+;			printf("Six Word\n\r");
+L20001:
+	pea	_.S3
+	jsr	_printf
+	addq.l	#4,sp
+;			printf("Format/Vector=%04X\n",*(eptr+0x03));
+	movea.l	_eptr,a0
+	move.w	6(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	pea	_.S4
+;			break;
+	bra.s	L28000
+;		case 0xC000:	/* Format $C - BERR Stack Frame			*/
+;			printf("Bus Error\n\r");
+L20002:
+	pea	_.S5
+	jsr	_printf
+;			printf("Format/Vector=%04X\n",*(eptr+0x03));
+	movea.l	_eptr,a0
+	move.w	6(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	pea	_.S6
+	jsr	_printf
+;			printf("SSW=%04X  Fault Addr=%04X%04X  data=%04X%04X  ",*(eptr+0x08),
+;						*(eptr+0x04),*(eptr+0x05),*(eptr+0x06),*(eptr+0x07));
+	movea.l	_eptr,a0
+	move.w	14(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	movea.l	_eptr,a0
+	move.w	12(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	movea.l	_eptr,a0
+	move.w	10(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	movea.l	_eptr,a0
+	move.w	8(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	movea.l	_eptr,a0
+	move.w	16(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	pea	_.S7
+	jsr	_printf
+	lea.l	36(sp),sp
+;			printf("Curr PC=%04X%04X  Cnt Reg=%04X\n\r",*(eptr+0x01),*(eptr+0x02),*(eptr+0x07));
+	movea.l	_eptr,a0
+	move.w	14(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	movea.l	_eptr,a0
+	move.w	4(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	movea.l	_eptr,a0
+	move.w	2(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	pea	_.S8
+	jsr	_printf
+	lea.l	16(sp),sp
+;			break;
+;		default:
+;			break;
+;	}
+;#endif
+;	printf("D0 = %08X   D1 = %08X   D2 = %08X   D3 = %08X\n\r",
+;				regs[0],regs[1],regs[2],regs[3]);
+L1:
+	move.l	_regs+12,-(sp)
+	move.l	_regs+8,-(sp)
+	move.l	_regs+4,-(sp)
+	move.l	_regs,-(sp)
+	pea	_.S9
+	jsr	_printf
+;	printf("D4 = %08X   D5 = %08X   D6 = %08X   D7 = %08X\n\r",
+;				regs[4],regs[5],regs[6],regs[7]);
+	move.l	_regs+28,-(sp)
+	move.l	_regs+24,-(sp)
+	move.l	_regs+20,-(sp)
+	move.l	_regs+16,-(sp)
+	pea	_.S10
+	jsr	_printf
+	lea.l	40(sp),sp
+;	printf("A0 = %08X   A1 = %08X   A2 = %08X   A3 = %08X\n\r",
+;				regs[8],regs[9],regs[10],regs[11]);
+	move.l	_regs+44,-(sp)
+	move.l	_regs+40,-(sp)
+	move.l	_regs+36,-(sp)
+	move.l	_regs+32,-(sp)
+	pea	_.S11
+	jsr	_printf
+;	printf("A4 = %08X   A5 = %08X   A6 = %08X   A7 = %08X\n\r",
+;				regs[12],regs[13],regs[14],regs[15]);
+	move.l	_regs+60,-(sp)
+	move.l	_regs+56,-(sp)
+	move.l	_regs+52,-(sp)
+	move.l	_regs+48,-(sp)
+	pea	_.S12
+	jsr	_printf
+;	printf("Stack (SP) = %X\n\r",eptr);
+	move.l	_eptr,-(sp)
+	pea	_.S13
+	jsr	_printf
+	lea.l	48(sp),sp
+;	while(1)
+L3:
+	bra.s	L3
+;		;
+;	for(stkcnt = 0x00; stkcnt <= 0x08; stkcnt++)
+;		printf("SP[%02X] = %04X\n\r",(int)stkcnt,*eptr++);
+L5:
+	movea.l	_eptr,a0
+	addq.l	#2,_eptr
+	move.w	(a0),d0
+	andi.l	#65535,d0
+	move.l	d0,-(sp)
+	moveq	#0,d0
+	move.w	_stkcnt,d0
+	move.l	d0,-(sp)
+	pea	_.S14
+	jsr	_printf
+	lea.l	12(sp),sp
+	addq.w	#1,_stkcnt
+	cmpi.w	#8,_stkcnt
+	bls.s	L5
+;}
+	rts
+;	 code: 2915 bytes   stack: 0 bytes
+	DS	0
+	SECTION strings,,R
+_.S15:	DC.B	'Spurious',10,0
+	SECTION code,,C
+;
+;void interrupt	spurious(void)
+;{
+	XDEF	_spurious
+_spurious:
+;*** allocation of local variables ***
+	movem.l	a0/a1/d0/d1,-(sp)
+;	if(read_sw3() & 0x01)
+	movea.l	#294912,a0
+	move.b	(a0),d0
+	ext.w	d0
+	andi.w	#1,d0
+	beq.s	L9
+;		printf("Spurious\n");
+	pea	_.S15
+	jsr	_printf
+	addq.l	#4,sp
+;}
+L9:
+	movem.l	(sp)+,a0/a1/d0/d1
+	rte
+;	 code: 40 bytes   stack: 0 bytes
+	END
+

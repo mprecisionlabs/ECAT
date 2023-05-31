@@ -1,0 +1,39 @@
+       OPT			CASE
+		SECTION		code,,C
+		XDEF		_INIT_CCS
+
+_INIT_CCS:
+; Just used to make the MONITOR RAMS the same WAIT states
+; as the EPROMS for timing purposes JMM - 3/31/92
+;		move.l		#$000550F0,$FFFA4C			;CS0
+;		move.l		#$000530F0,$FFFA50			;CS1
+;		move.l		#$000568F0,$FFFA54			;CS2
+;		move.l		#$000551BE,$FFFA4C			;CS0
+;		move.l		#$000531BE,$FFFA50			;CS1
+;		move.l		#$000569BE,$FFFA54			;CS2
+; EXPERIMENTAL CHANGE - 02/25/93 - (JMM)
+; Another changed was made to the ROM/RAM wait states to see if a 2-wait
+; state delay is enough for timing issues
+		move.l		#$080568B0,$FFFA48			;CSB
+		move.l		#$000550BE,$FFFA4C			;CS0
+		move.l		#$000530BE,$FFFA50			;CS1
+		move.l		#$000568BE,$FFFA54			;CS2
+
+; Original INIT_CCS changes
+; The test fixture uses CS8 instead of CS5 so they need to be swapped here
+;		move.l		#$00000000,$FFFA58			;CS3 - NOT USED
+		move.l		#$060376B0,$FFFA58			;CS3 - NOT USED
+
+		move.l		#$05057B70,$FFFA5C			;CS4 - E100 LCL
+
+;		move.l		#$00000000,$FFFA60			;CS5 - BackPlane - fixture
+;		move.l		#$06037F70,$FFFA6C			;CS8 - BackPlane - fixture
+		move.l		#$06037F70,$FFFA60			;CS5 - BackPlane - ECAT
+		move.l		#$FFF86807,$FFFA6C			;CS8 - Keyboard IRQ3 (PIRQ4)
+
+		move.l		#$05037EB0,$FFFA64			;CS6 - Peak Detector Board
+		move.l		#$00000000,$FFFA68			;CS7 - UNUSED?
+		move.l		#$04037CF0,$FFFA70			;CS9 - Local Micro
+;		move.l		#$04C07D70,$FFFA74			;CS10- GPIB (not used)
+		move.l		#$00000000,$FFFA74			;CS10  (not used)
+		rts

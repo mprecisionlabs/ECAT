@@ -1,0 +1,27 @@
+TITLE		Keytek Interface Board Timer Input Decoder
+PATTERN		GOOD
+REVISION	A
+AUTHOR		Paul Breed
+COMPANY		KeyTek Instrument Corp
+DATE			July 7, 1992
+
+; This GAL is used to map the microprocessor TIMER inputs on ALL
+; interface boards
+
+
+CHIP GOOD PAL16V8
+;Pin #1      2      3      4      5      6      7      8      9      10
+      CLK    TIL0   TIL1   TIL2   TIL3   DB0    DB1    DB2    A0     GND
+
+;Pin #11     12     13     14     15     16     17     18     19     20
+      A1     TO0    TO0E   TO1    TO1E   TO2    TO2E   TO3    TO3E   VCC
+
+EQUATIONS
+TO0E	:= TO0E*(DB0+DB1)+(/DB0*/DB1*DB2)
+TO1E	:= TO1E*(/DB0+DB1)+(DB0*/DB1*DB2)
+TO2E	:= TO2E*(DB0+/DB1)+(/DB0*DB1*DB2)
+TO3E	:= TO3E*(/DB0+/DB1)+(DB0*DB1*DB2)
+TO0	= (/A0*TIL0)+(A0*TIL2);+(/A0*A1*TIL2)+(A0*A1*TIL3)
+TO1	= (/A0*TIL1)+(A0*TIL3);+(/A0*A1*TIL3)+(A0*A1*TIL0)
+TO2	= (/A0*TIL2)+(A0*TIL0);+(/A0*A1*TIL0)+(A0*A1*TIL1)
+TO3	= (/A0*TIL3)+(A0*TIL1);+(/A0*A1*TIL1)+(A0*A1*TIL2)

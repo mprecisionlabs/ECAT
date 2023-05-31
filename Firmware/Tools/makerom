@@ -1,0 +1,70 @@
+
+
+%.obj:%.c
+	mcc68k -c -nQ -nKc -A -Xp $(BETA_RELEASE) $*.c
+
+%.obj:%.src
+	mcc68k -c -nQ -nKc -A -Xp $(BETA_RELEASE) $*.src
+
+OBJECTS=ecat.obj\
+		front.obj\
+		lpray.obj\
+		fixit.obj\
+		csel.obj\
+		intface.obj\
+		tiocntl.obj\
+		fp_srg.obj\
+		fp_main.obj\
+		fp_eft.obj\
+		cmd_srg.obj\
+		cmd_bay.obj\
+		cmd_li.obj\
+		cmd_root.obj\
+		cmd_meas.obj\
+		cmd_eft.obj\
+		cmd_data.obj\
+		krnl_srg.obj\
+		krnl_eft.obj\
+		krnl_pqf.obj\
+		fp_pqf.obj\
+		ad_trap.obj\
+		ads_trap.obj\
+		acrms.obj\
+		ehv.obj\
+		krnl_emc.obj\
+		startup.obj
+
+all: update.abs update.bin
+
+update.bin: update.abs
+	$(ECAT_SREC2BIN) -q -oo 80000 update.abs update.bin
+
+update.abs: $(OBJECTS) $(ECATPROJ)\library\keytek.lib
+	lnk68k  -l$(ECATLIB)\keytek.lib -l$(MRI_RUNTIME_LIB) -crom.cmd -oupdate.abs -m >ecat.map
+
+ecat.obj:      ecat.c      module.h    ecat.h      intface.h   front.h
+front.obj:     front.c     module.h    ecat.h      intface.h   front.h
+tiocntl.obj:   tiocntl.c
+intface.obj:   intface.c   intface.h
+fp_srg.obj:    fp_srg.c    module.h    intface.h   ecat.h      front.h
+fp_main.obj:   fp_main.c   module.h    intface.h   ecat.h      front.h  rev.h
+fp_eft.obj:    fp_eft.c    module.h    intface.h   ecat.h      front.h  eft.h
+cmd_srg.obj:   cmd_srg.c   module.h    intface.h   ecat.h
+cmd_bay.obj:   cmd_bay.c   module.h    intface.h   ecat.h
+cmd_li.obj:    cmd_li.c    module.h    intface.h   ecat.h
+cmd_root.obj:  cmd_root.c  module.h    intface.h   ecat.h      rev.h
+cmd_meas.obj:  cmd_meas.c  module.h    intface.h   ecat.h
+cmd_eft.obj:   cmd_eft.c   module.h    intface.h   ecat.h      eft.h
+cmd_data.obj:  cmd_data.c  module.h    intface.h   ecat.h
+krnl_srg.obj:  krnl_srg.c  module.h    intface.h   ecat.h
+krnl_eft.obj:  krnl_eft.c  module.h    intface.h   ecat.h      front.h  eft.h
+krnl_emc.obj:  krnl_emc.c  module.h    intface.h   ecat.h      emc.h
+krnl_pqf.obj:  krnl_pqf.c  pqf.h
+fp_pqf.obj:    fp_pqf.c    pqf.h
+ad_trap.obj:   ad_trap.src
+ads_trap.obj:  ads_trap.src
+fixit.obj:     fixit.src
+csel.obj:      csel.c
+lpray.obj:     lpray.c
+ehv.obj:       ehv.c       module.h    intface.h   ecat.h
+acrms.obj:     acrms.h     module.h    intface.h   ecat.h

@@ -1,0 +1,23 @@
+#ifndef TEST_DEFINED
+#define TEST_DEFINED YES
+
+#define TEST_STATUS_PRESTART     0
+#define TEST_STATUS_TESTING      1
+#define TEST_STATUS_PAUSED       2
+#define TEST_STATUS_DONE         3
+
+#ifdef IS_MAIN_PROGRAM_FILE
+GLOBALVARIABLE INTEGER test_status = TEST_STATUS_PRESTART;
+#else
+GLOBALVARIABLE INTEGER test_status;
+#endif
+
+//GLOBALVARIABLE BOOL test_bInProgress GLOB_INITFALSE; /* FALSE if paused or halted */
+GLOBALVARIABLE SHORT test_stepi;
+GLOBALVARIABLE SHORT test_stepnum GLOB_INIT0;
+GLOBALVARIABLE DWORD test_dwDegreesUsedInStep;
+GLOBALVARIABLE DWORD test_dwDegreesLeft;
+
+GLOBALVARIABLE SHORT test_phase;
+
+#endif /* TEST_DEFINED */

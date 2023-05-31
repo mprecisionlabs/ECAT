@@ -1,0 +1,93 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;	ENTRY: Main entry point routine, it does the following:
+;
+;		1.	Initializes SP as ????STACKTOP which was
+;			defined at link time
+;		2.	Initializes ????HEAP as starting address
+;			of SECTION heap which will be after SECTION code
+;		3.	Initializes the frame pointer
+;		4.	Clears the 'zerovars' section.
+;		5.	Calls C initialization routine _START
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;	PC relative addressing modes may be removed when using
+;	absolute addressing.
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;	NOTE:
+;		The special characters #, $, and ^ which appear after
+;		some of the comment indicators must be removed also if
+;		the comment indicator is removed.  They are used by
+;		Microtec to aid in the automatic building and testing
+;		of libraries.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+			OPT			CASE
+ENTRY		IDNT
+			SECTION		code,,C					;CODE SECTION
+			XDEF		ENTRY
+			XDEF		__exit
+			XDEF		__get_sect_addr
+
+ENTRY:
+			MOVE.L		#????STACKTOP,SP		;STACK POINTER
+; Try to FIX USP problem
+			move.l		#????USPTOP,A3
+			move		A3,USP					;Change Stack pointer
+			LEA			????HEAP,A0
+			ADDQ.L		#4,A0
+			MOVE.L		A0,????HEAP				;HEAP POINTER
+			MOVE.L		#0,A6					;FRAME POINTER INITIALIZATION
+; THE FOLLOWING CODE CLEARS THE ZEROVARS SECTION
+
+			LEA			.STARTOF.(zerovars),A0	;START OF THE SECTION
+			MOVE.L		#.SIZEOF.(zerovars),D1	;LENGTH OF THE SECTION
+			MOVE.L		D1,D0					;SAVE IN D0 ALSO
+			LSR.L		#2,D1					;NUMBER OF LONG WORDS TO MOVE
+			BRA.S		CLR0VARS1				;SKIP FIRST CLEAR
+CLR0VARS:
+			CLR.L		(A0)+					;CLEAR THE ADDRESS
+CLR0VARS1:
+			DBF			D1,CLR0VARS				;DECREMENT LONG WORD COUNT & TEST
+			SUBI.L		#$10000,D1				;SIMULATE BORROW FROM LOW 16 BITS
+			CMPI.L		#-1,D1					;IS LONG WORD COUNT == -1
+			BNE.S		CLR0VARS				;NO -- KEEP CLEARING
+			ANDI.L		#3,D0					;SHOULD INDIVIDUAL BYTES BE CLEARED
+			BRA.S		CLR0VARS2				;SKIP FIRST CLEAR
+CLR0VARS3:
+			CLR.B		(A0)+					;CLEAR ONE MORE BYTE
+CLR0VARS2:
+			DBF			D0,CLR0VARS3			;DECREMENT BYTE COUNT & TEST
+			JSR			__START(PC)				;C INITIALIZATION
+__exit:
+			RTS
+
+__get_sect_addr:
+;%			MOVE.L		A5,D0					;GET A5 FOR PROCESSING
+;%			SUB.L		#?A5,D0					;SUBTRACT A5 OFFSET
+			RTS									;AND RETURN
+NULL		DC.L		0						;NULL POINTER
+
+			SECTION		zerovars,,D				;DATA SECTION
+			XREF		????STACKTOP
+			XREF		????USPTOP
+			XREF		__START
+;%			XREF		_sbrk
+;$			XREF		__initcopy
+
+			XDEF		__reentrant
+__reentrant
+			DS.L		1
+;	Force section vars to follow sections code and zerovars in
+;	memory. This is done even though there is no code in
+;	section vars.
+
+			SECTION		vars,,D					;INITIALIZED DATA
+			SECTION		heap,,D					;HEAP SECTION (AFTER CODE)
+			XDEF		????HEAP
+????HEAP
+			DS.L		1
+			END			ENTRY

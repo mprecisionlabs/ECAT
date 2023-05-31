@@ -1,0 +1,69 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "E500"=.\E500\E500.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ECAT32/E500", DRSAAAAA
+    .\e500
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "PQFWare"=.\PQFWare\PQFWare.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ECAT32/PQFWare", ERSAAAAA
+    .\PQFWare
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "e400"=.\E400\E400.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ECAT32/E400", CRSAAAAA
+    .\e400
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/ECAT32", ARSAAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

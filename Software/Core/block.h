@@ -1,0 +1,5 @@
+#define CMD_BLOCK_SET              WM_USER+1000
+#define CMD_BLOCK_FIXED            CMD_BLOCK_SET+1
+#define CMD_BLOCK_SET_ORDER        CMD_BLOCK_SET+2
+#define CMD_BLOCK_GET_ORDER        CMD_BLOCK_SET+3
+

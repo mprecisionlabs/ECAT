@@ -1,0 +1,25 @@
+TITLE		KeyTek Display and Keyboard Controller
+PATTERN		GOOD
+REVISION	A
+AUTHOR		Paul Breed
+COMPANY		KeyTek Instrument Corp
+DATE			May 25, 1991
+
+; This GAL is used to control both the LCD Display and the Keyboard
+; on the front panel board
+
+
+CHIP GOOD PAL16V8
+;Pin #1      2      3      4      5      6      7      8      9      10
+      CLK    RW     A2     A3     NCS    NIRQ   I6     I7     I8     GND
+
+;Pin #11     12     13     14     15     16     17     18     19     20
+      I9     NKRD   NKWR   NKCS   KCLK   PIRQ   F5     F6     DCS    VCC
+
+EQUATIONS
+NKRD	= (NCS+A2+A3+/RW)
+NKWR	= (NCS+A2+A3+RW)
+NKCS	= (NCS+A2+A3)
+KCLK	:= /KCLK
+PIRQ	= NIRQ
+DCS	= /(NCS+A2+(/A3))

@@ -1,0 +1,8 @@
+Directory	- \asm68k
+asm68k.exe	- Executable assembler program
+lib68k.exe	- Executable librarian program
+lnk68k.exe	- Executable linker program
+iee2aout.exe	- Executable IEEE to a.out converter
+sieve.src	- Assembler test program input source file 
+asm68k.fil	- File List 
+version		- Version Number 

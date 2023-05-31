@@ -1,0 +1,739 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APP                 ICON                    "..\\res\\PQF_app.ico"
+IDI_LIMIT               ICON                    "..\\res\\BLICON.ICO"
+IDI_DURATION            ICON                    "..\\res\\BDICON.ico"
+IDI_PERIOD              ICON                    "..\\res\\BRICON.ICO"
+IDI_FREQUENCY           ICON                    "..\\res\\BPICON.ico"
+IDI_SWITCH              ICON                    "..\\res\\BSWICON.ico"
+IDI_EX_POINT            ICON                    "..\\res\\Bexpicon.ico"
+IDI_STOP                ICON                    "..\\res\\Bhandico.ico"
+IDI_NEG_V               ICON                    "..\\res\\Bmvicon.ico"
+IDI_PHASE               ICON                    "..\\res\\Bphicon.ico"
+IDI_POS_V               ICON                    "..\\res\\Bpvicon.ico"
+IDI_REPEAT              ICON                    "..\\res\\Brepicon.ico"
+IDI_VOLTAGE             ICON                    "..\\res\\Bvicon.ico"
+IDI_POLARITY            ICON                    "..\\res\\Bvpicon.ico"
+IDI_ARR_DOWN            ICON                    "..\\res\\arr_down.ico"
+IDI_ARR_UP              ICON                    "..\\res\\arr_up.ico"
+IDI_COMM_LINK_2         ICON                    "..\\res\\com_lnk2.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CUR_VOLTAGE         CURSOR                  "..\\res\\bvcur.cur"
+IDC_CUR_POS_V           CURSOR                  "..\\res\\bpvcur.cur"
+IDC_CUR_NEG_V           CURSOR                  "..\\res\\bmvcur.cur"
+IDC_CUR_PHASE           CURSOR                  "..\\res\\bphcur.cur"
+IDC_CUR_SWITCH          CURSOR                  "..\\res\\bswcur.cur"
+IDC_CUR_REPEAT          CURSOR                  "..\\res\\brepeat.cur"
+IDC_CUR_POLARITY        CURSOR                  "..\\res\\bpolcur.cur"
+IDC_CUR_FREQUENCY       CURSOR                  "..\\res\\bpcur.cur"
+IDC_CUR_DURATION        CURSOR                  "..\\res\\bdurcur.cur"
+IDC_CUR_PERIOD          CURSOR                  "..\\res\\brcur.cur"
+IDC_CUR_CROSS           CURSOR                  "..\\res\\cross.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAIN_MENU MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        IDM_NEW
+        MENUITEM "&Open...",                    IDM_OPEN
+        MENUITEM "&Save",                       IDM_SAVE
+        MENUITEM "Save &As...",                 IDM_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",                       2
+    END
+    POPUP "Log [ON]"
+    BEGIN
+        MENUITEM "Logging On",                  IDM_LON
+        MENUITEM "Logging Off",                 IDM_LOFF
+        MENUITEM SEPARATOR
+        MENUITEM "Setup Logging",               IDM_LSET
+    END
+    POPUP "&Test"
+    BEGIN
+        MENUITEM "&Inrush Current Qualification", IDM_PQF_QUALIFICATION
+    END
+    POPUP "&Graph"
+    BEGIN
+        MENUITEM "Zoom &In",                    IDM_PQF_GRAPH_ENABLEZOOMIN
+        MENUITEM "Zoom &Out",                   IDM_PQF_GRAPH_ZOOMOUT
+        , GRAYED
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Help",                       IDM_HELP_CONTENTS
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",                   IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_E400_ACL ACCELERATORS 
+BEGIN
+    "A",            173,                    VIRTKEY, SHIFT, ALT
+    "A",            174,                    VIRTKEY, ALT
+    "I",            173,                    VIRTKEY, ALT
+    "I",            173,                    VIRTKEY, SHIFT, ALT
+    "D",            138,                    VIRTKEY, ALT
+    "D",            138,                    VIRTKEY, SHIFT, ALT
+    "C",            2,                      VIRTKEY, ALT
+    "C",            2,                      VIRTKEY, SHIFT, ALT
+    "1",            107,                    VIRTKEY, ALT
+    "2",            108,                    VIRTKEY, ALT
+    "3",            109,                    VIRTKEY, ALT
+    "N",            106,                    VIRTKEY, ALT
+    "N",            106,                    VIRTKEY, SHIFT, ALT
+    "G",            105,                    VIRTKEY, ALT
+    "G",            105,                    VIRTKEY, SHIFT, ALT
+    "F",            104,                    VIRTKEY, ALT
+    "F",            104,                    VIRTKEY, SHIFT, ALT
+    "O",            103,                    VIRTKEY, ALT
+    "O",            103,                    VIRTKEY, SHIFT, ALT
+    "M",            102,                    VIRTKEY, ALT
+    "M",            102,                    VIRTKEY, SHIFT, ALT
+    "R",            101,                    VIRTKEY, ALT
+    "R",            101,                    VIRTKEY, SHIFT, ALT
+    "E",            210,                    VIRTKEY, ALT
+    "E",            210,                    VIRTKEY, SHIFT, ALT
+    "P",            210,                    VIRTKEY, ALT
+    "P",            210,                    VIRTKEY, SHIFT, ALT
+    "D",            999,                    VIRTKEY, ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_PQFDLG DIALOGEX 0, 0, 525, 300
+STYLE DS_SETFONT | DS_CENTER | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "graphctrl",IDD_PQF_GRAPH,"PqfGraph",WS_TABSTOP,6,12,398,
+                    99
+    CONTROL         "List1",IDD_PQF_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,6,129,330,120
+    COMBOBOX        IDC_COMBO_LEVEL,50,273,37,50,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDD_PQF_STARTEDIT,90,273,26,12,ES_CENTER | ES_MULTILINE | 
+                    ES_NUMBER | NOT WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "Spin2",IDC_SPIN_START,"msctls_updown32",UDS_ARROWKEYS,
+                    116,273,11,13,WS_EX_STATICEDGE
+    EDITTEXT        IDD_PQF_DURATIONEDIT,141,273,26,12,ES_CENTER | 
+                    ES_MULTILINE | NOT WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "Spin2",IDC_SPIN_DURATION,"msctls_updown32",
+                    UDS_ARROWKEYS,168,273,9,13,WS_EX_STATICEDGE
+    CONTROL         "Spin2",IDC_SPIN_DUR_UNIT,"msctls_updown32",UDS_WRAP | 
+                    UDS_ARROWKEYS,204,273,9,13,WS_EX_STATICEDGE
+    EDITTEXT        IDD_PQF_RMSIEDIT,227,273,26,12,ES_MULTILINE | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "Spin2",IDC_SPIN_RMSI,"msctls_updown32",UDS_ARROWKEYS,
+                    254,273,11,13,WS_EX_STATICEDGE
+    EDITTEXT        IDD_PQF_PEAKIEDIT,279,273,26,12,ES_MULTILINE | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "Spin2",IDC_SPIN_PICKI,"msctls_updown32",UDS_ARROWKEYS,
+                    306,273,11,13,WS_EX_STATICEDGE
+    PUSHBUTTON      "&Insert",IDD_PQF_INSERT,358,129,46,16
+    PUSHBUTTON      "&Replace",IDD_PQF_REPLACE,358,146,46,16
+    PUSHBUTTON      "Make &Copy",IDD_PQF_COPY,358,163,46,16
+    PUSHBUTTON      "&Delete",IDD_PQF_DELETE,357,217,46,16
+    PUSHBUTTON      "Delete &All",IDD_PQF_DELETE_ALL,357,234,46,16
+    PUSHBUTTON      "up",IDC_BUT_LIST_UP,338,129,15,16,BS_ICON
+    PUSHBUTTON      "down",IDC_BUT_LIST_DN,338,234,15,16,BS_ICON
+    CTEXT           "",IDD_PQF_LINE_VNOMINAL,461,26,22,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "",IDD_PQF_LINE_VACTUAL,487,26,22,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "",IDD_PQF_LINE_FREQNOMINAL,461,39,22,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "",IDD_PQF_LINE_FREQACTUAL,487,39,22,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "",IDD_PQF_ACTUAL_RMSI,463,69,34,13,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "",IDD_PQF_ACTUAL_PEAKI,463,85,34,13,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    PUSHBUTTON      "Run",IDD_PQF_RUN,418,118,25,13
+    PUSHBUTTON      "Stop",IDD_PQF_STOP,418,140,25,13
+    PUSHBUTTON      "On/Off",IDD_PQF_EUTPOWER,467,126,25,13
+    CONTROL         "Repeat &Test",IDD_PQF_TESTREPEAT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,459,153,55,11
+    GROUPBOX        "Phase",IDD_PQF_PHASEBOX,410,171,109,26
+    GROUPBOX        "Standby Power",IDC_STATIC,409,201,61,46
+    CONTROL         "&Open - 0%",IDC_RDB_OPEN,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,418,215,49,10
+    CONTROL         "100%",IDC_RDB_HUNDRED,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,418,230,49,10
+    PUSHBUTTON      "E&xit",IDD_ECAT_EXIT,475,225,32,16
+    CONTROL         "L1",IDD_PQF_PHASEL1,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED | WS_GROUP | WS_TABSTOP,419,182,26,10
+    CONTROL         "L2",IDD_PQF_PHASEL2,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED | WS_TABSTOP,451,182,26,10
+    CONTROL         "L3",IDD_PQF_PHASEL3,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED | WS_TABSTOP,481,182,26,10
+    PUSHBUTTON      "Pause",IDD_PQF_PAUSE,340,114,25,11,NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_TABSTOP
+    PUSHBUTTON      "Step",IDD_PQF_STEP,357,187,25,11,NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_TABSTOP
+    PUSHBUTTON      "Cheat",IDD_PQF_CHEAT,367,114,25,11,NOT WS_VISIBLE | 
+                    WS_DISABLED | NOT WS_TABSTOP
+    GROUPBOX        "EUT power",IDD_PQF_EUTPOWER_GROUP,459,114,51,35
+    GROUPBOX        "Line",IDC_STATIC,409,8,110,49
+    CTEXT           "Time Left",IDD_PQF_TIME,225,115,110,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Level [%]",IDD_PQF_LEVELHDR,50,263,37,8,NOT WS_GROUP
+    CTEXT           "Total Time: 99:59:59.99",IDD_PQF_TOTALTIME,6,115,110,12,
+                    SS_CENTERIMAGE | SS_SUNKEN | NOT WS_GROUP
+    CTEXT           "Start [dg]",IDD_PQF_STARTHDR,91,263,36,8,NOT WS_GROUP
+    CTEXT           "Duration",IDD_PQF_DURATIONHDR,131,263,86,8,NOT WS_GROUP
+    LTEXT           "RMS-I [A]",IDD_PQF_RMSILIMHDR,227,263,36,8,NOT WS_GROUP
+    LTEXT           "Peak-I [A]",IDD_PQF_PEAKILIMHDR,279,263,35,8,NOT 
+                    WS_GROUP
+    LTEXT           "Voltage (V)",IDC_STATIC,419,28,36,8
+    LTEXT           "Freq (Hz)",IDC_STATIC,419,41,36,8
+    LTEXT           "Nom",IDC_STATIC,461,18,22,8
+    LTEXT           "Actual",IDD_PQF_LINEACTUAL_TEXT,487,18,20,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,6,513,1
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME | WS_GROUP | 
+                    WS_TABSTOP,6,257,330,37,WS_EX_TRANSPARENT
+    CTEXT           "Static",IDC_DUR_UNITS_TEXT,178,273,26,13,0,
+                    WS_EX_STATICEDGE
+    CTEXT           "TEST PLAN STEPS",IDC_STATIC,119,120,95,8
+    LTEXT           "Parameters",IDC_STATIC,9,273,38,13,SS_CENTERIMAGE
+    GROUPBOX        "Test Controls",IDC_PQF_TEST_GRP,410,106,109,61
+    LTEXT           "RMS I",IDD_PQF_ACTUAL_RMSI_TEXT,435,71,21,8,NOT 
+                    WS_GROUP
+    LTEXT           "Peak I",IDD_PQF_ACTUAL_PEAKI_TEXT,435,87,21,8,NOT 
+                    WS_GROUP
+    GROUPBOX        "Actual AC",IDD_PQF_ACTUALAC_TEXT,410,58,109,46
+    GROUPBOX        "Inrush Current Qualification",IDC_STATIC,343,253,176,41,
+                    BS_RIGHT
+    PUSHBUTTON      "&Qualify",IDC_BUT_QUALIFY,464,267,48,16
+    CTEXT           "",IDC_INRUSH_POS,408,263,30,12,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+    CTEXT           "",IDC_INRUSH_NEG,408,277,30,12,SS_CENTERIMAGE,
+                    WS_EX_STATICEDGE
+    CTEXT           "A",IDC_STATIC,441,263,13,12,SS_CENTERIMAGE
+    CTEXT           "A",IDC_STATIC,441,277,13,12,SS_CENTERIMAGE
+    LTEXT           "Positive peak",IDC_STATIC,349,263,54,12,SS_CENTERIMAGE
+    LTEXT           "Negative peak",IDC_STATIC,349,277,54,12,SS_CENTERIMAGE
+END
+
+IDD_ABOUT DIALOGEX 0, 0, 352, 173
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+CAPTION "About PQFWare"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "TEXT",IDD_ABT_LABEL,57,3,187,34
+    DEFPUSHBUTTON   "Ok",IDOK,301,3,45,14
+    ICON            IDI_APP,IDC_STATIC,6,3,21,20
+    LTEXT           "Revision:",IDD_ABT_REV,58,56,167,8
+    LTEXT           "Device:",IDD_ABT_NAME,58,45,167,8
+    LTEXT           "Serial Number:",IDD_ABT_SN,58,67,167,8
+    LTEXT           "Modules Loaded:",IDC_STATIC,6,86,65,8
+    EDITTEXT        IDD_ABT_LIST,6,102,340,65,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL,WS_EX_STATICEDGE
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,80,340,1
+END
+
+IDD_PAUSE DIALOG  0, 0, 186, 130
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Operator Pause"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CTEXT           "ECAT Paused",IDC_STATIC,6,6,174,8
+    PUSHBUTTON      "&Run",IDC_BUT_RUN,6,28,45,14
+    LTEXT           "Press:",IDC_STATIC,8,18,121,8
+    PUSHBUTTON      "&Stop",IDC_BUT_STOP,6,60,45,14
+    LTEXT           "to Continue Running",IDC_STATIC,57,31,81,8
+    LTEXT           "Comment for the Log:",104,6,81,103,8
+    EDITTEXT        IDC_EDIT_LOG,6,91,174,34,ES_MULTILINE | ES_WANTRETURN | 
+                    WS_VSCROLL
+    LTEXT           "to Abort the Test",IDC_STATIC,57,63,56,8
+    LTEXT           "or",IDC_STATIC,6,47,16,8
+END
+
+IDD_SETUP_LOG DIALOG  18, 18, 175, 138
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Logfile Setup"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        LSDLG_NAME,6,18,123,12,ES_MULTILINE | ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",LSDLG_SELECT,131,17,38,14
+    GROUPBOX        "Actions",IDC_STATIC,6,52,78,59
+    CONTROL         "Append",LSDLG_APPEND,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,18,63,54,12
+    CONTROL         "Rewrite",LSDLG_REWRITE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,18,78,54,12
+    CONTROL         "Inc Name",LSDLG_INCNAME,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED | WS_TABSTOP,18,93,54,12
+    GROUPBOX        "Output Format",IDC_STATIC,90,52,79,59
+    CONTROL         "Text",LSDLG_TEXT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,112,67,46,12
+    CONTROL         "Export",LSDLG_EXPORT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,112,87,46,12
+    DEFPUSHBUTTON   "OK",IDOK,33,117,46,14
+    PUSHBUTTON      "Cancel",IDCANCEL,95,117,46,14
+    LTEXT           "Existing File:",IDC_STATIC,6,39,51,8
+    LTEXT           "Log File Name",IDC_STATIC,6,6,75,8
+END
+
+IDD_COMMENT DIALOGEX 0, 0, 224, 98
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+CAPTION "Comment"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,62,79,42,14
+    PUSHBUTTON      "Cancel",IDCANCEL,120,79,42,14
+    EDITTEXT        LCDLG_TEXT,6,18,212,54,ES_MULTILINE | ES_WANTRETURN | 
+                    NOT WS_BORDER | WS_VSCROLL,WS_EX_STATICEDGE
+    LTEXT           "Comment for the Log",IDC_STATIC,6,6,129,8
+END
+
+IDD_START_LOG DIALOG  0, 0, 208, 218
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+CAPTION "Logfile Start"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        LSDLG_NAME,6,18,155,13,ES_MULTILINE | ES_AUTOHSCROLL
+    PUSHBUTTON      "Select",LSDLG_SELECT,163,17,39,14
+    GROUPBOX        "File Mode",120,6,36,196,27
+    GROUPBOX        "Format",IDC_STATIC,6,66,196,23
+    EDITTEXT        LSDLG_OPERATOR,6,103,196,13
+    EDITTEXT        LSDLG_EUT,6,132,196,12
+    EDITTEXT        LSDLG_COMMENT,6,159,196,29,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,10,198,56,14
+    PUSHBUTTON      "Cancel",IDCANCEL,76,198,56,14
+    PUSHBUTTON      "No Logfile",LSDLG_NOLOG,142,198,56,14
+    CONTROL         "Append",LSDLG_APPEND,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,15,49,51,8
+    CONTROL         "Rewrite",LSDLG_REWRITE,"Button",BS_AUTORADIOBUTTON,79,
+                    49,51,8
+    CONTROL         "IncName",LSDLG_INCNAME,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,143,49,51,8
+    CONTROL         "Text",LSDLG_TEXT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    42,75,51,9
+    CONTROL         "Export",LSDLG_EXPORT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,119,75,51,9
+    LTEXT           "Log File Name:",IDC_STATIC,6,6,64,8
+    LTEXT           "Operator",IDC_STATIC,6,92,30,8
+    LTEXT           "EUT Name",IDC_STATIC,6,122,48,8
+    LTEXT           "Comments",IDC_STATIC,6,151,46,8
+END
+
+IDD_POLL DIALOG  0, 0, 84, 47
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "Dummy window"
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_COMM_LINK_MSG DIALOGEX 0, 0, 226, 33
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | 
+    WS_VISIBLE | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "ECAT"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CTEXT           "Establishing communication link with ECAT system.\nPlease wait...",
+                    IDC_STATIC,33,7,186,19
+    ICON            IDI_COMM_LINK_2,IDC_STATIC,7,7,21,20
+END
+
+IDD_CALIBRATE DIALOGEX 0, 0, 266, 242
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Module Setup Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Module",IDC_STATIC,6,6,109,42,WS_GROUP
+    CONTROL         "Left",IDD_LEFT_MOD,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,21,18,26,10
+    CONTROL         "Right",IDD_RIGHT_MOD,"Button",BS_AUTORADIOBUTTON,57,18,
+                    30,10
+    EDITTEXT        IDD_MODULE_EDIT,47,30,25,12,ES_READONLY | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "SPIN1",IDD_MOD_SPIN,"msctls_updown32",0x0,74,30,11,12
+    COMBOBOX        IDD_NAME_COMBO,13,70,44,68,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDD_ID_EDIT,65,70,43,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDD_SERN_EDIT,65,90,43,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDD_CAL_EDIT,15,127,41,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      " &Apply",IDD_SET_CAL,63,127,42,13
+    LISTBOX         IDD_CAL_LIST,13,144,92,53,NOT WS_BORDER | WS_VSCROLL,
+                    WS_EX_STATICEDGE
+    CONTROL         "Surge Coupler",IDD_SRGCPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,18,58,8
+    CONTROL         "Surge",IDD_SURGE_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,17,60,8
+    CONTROL         "EFT Coupler",IDD_EFT_CPL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,29,58,8
+    CONTROL         "EFT",IDD_EFT_TYPE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    197,28,60,8
+    CONTROL         "Line Coupler",IDD_ACCPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,40,58,8
+    CONTROL         "PQF ",IDD_PQF_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,39,60,8
+    CONTROL         "HV Coupler",IDD_HVCPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,51,58,8
+    CONTROL         "Power",IDD_POWER_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,50,60,8
+    CONTROL         "IO Coupler ",IDD_DATACPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,62,58,8
+    CONTROL         "Amplifier",IDD_AMP_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,61,60,8
+    CONTROL         "Three Phase ",IDD_THREE_PHASE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,73,58,8
+    CONTROL         "Impedance",IDD_IMPED_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,72,60,8
+    CONTROL         "EMC Clamp",IDD_CLAMP_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,84,58,8
+    CONTROL         "ESD",IDD_ESD_TYPE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    197,83,60,8
+    LTEXT           "Text",IDD_TYPE_TEXT,127,98,25,8
+    CONTROL         "EFT 2MHz",IDD_EFT2M,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,126,50,10
+    CONTROL         "DC Option",IDD_SRGDC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,126,45,10
+    CONTROL         "EFT 8KV",IDD_EFT_8KV,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,137,50,10
+    CONTROL         "AC Option",IDD_ACOPT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,137,45,10
+    CONTROL         "EFT CHIRP",IDD_EFT_CHIRP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,148,50,10
+    CONTROL         "Allow EHV",IDD_EHVSUPPORT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,148,45,10
+    CONTROL         "SW E502",IDD_SW_E502,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,159,50,10
+    CONTROL         "5 Channel",IDD_5CHAN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,159,45,10
+    PUSHBUTTON      "&Set",IDD_SET,12,214,47,16
+    PUSHBUTTON      "Save &CFG ",IDD_SAVE_CFG,149,215,47,16
+    PUSHBUTTON      "Close",IDCANCEL,205,215,47,16
+    GROUPBOX        "Options",IDC_STATIC,121,114,139,86,WS_GROUP
+    GROUPBOX        "Types",IDC_STATIC,121,6,139,104,WS_GROUP
+    GROUPBOX        "",IDC_STATIC,6,50,109,60,WS_GROUP
+    GROUPBOX        "Cal Values",IDD_MISC,6,114,109,86,WS_GROUP
+    GROUPBOX        "",IDC_STATIC,6,204,254,33,WS_GROUP
+    LTEXT           "Values are permanent",IDC_STATIC,65,217,74,8
+    LTEXT           "Row:",IDC_STATIC,21,32,16,8
+    LTEXT           "Module ID",IDC_STATIC,67,60,39,8
+    LTEXT           "V Meas.",IDC_STATIC,126,170,30,8
+    LTEXT           "I Meas.",IDC_STATIC,197,170,31,8
+    LTEXT           "Module Name",IDC_STATIC,13,60,46,8
+    LTEXT           "Serial #",IDC_STATIC,25,92,33,8
+    CONTROL         "SPIN2",IDD_VM_SPIN,"msctls_updown32",0x0,164,180,11,12
+    CONTROL         "SPIN3",IDD_IM_SPIN,"msctls_updown32",0x0,234,180,11,12
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDVERT,139,209,1,28
+    EDITTEXT        IDD_VM_TEXT,127,180,36,12,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    EDITTEXT        IDD_IM_TEXT,197,180,36,12,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+END
+
+IDD_INTERLOCK DIALOGEX 0, 0, 289, 90
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+CAPTION "INTERLOCK"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            "",IDC_ILOCK_ICON,14,22,21,20
+    PUSHBUTTON      "&Abort",IDABORT,83,70,53,14
+    DEFPUSHBUTTON   "&Retry",IDRETRY,152,70,53,14
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,63,277,1
+    EDITTEXT        IDC_EDIT_INFO,45,5,238,52,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER | WS_HSCROLL,WS_EX_STATICEDGE
+END
+
+IDD_TEST_UPLOAD DIALOGEX 0, 0, 182, 33
+STYLE DS_SETFONT | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "ECAT"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            IDI_COMM_LINK_2,IDC_STATIC,7,7,21,20
+    CTEXT           "Uploading test plan. Pease wait...",IDC_STATIC,33,7,142,
+                    19,SS_CENTERIMAGE
+END
+
+IDD_QUALIFYING DIALOGEX 0, 0, 147, 33
+STYLE DS_SETFONT | DS_MODALFRAME | DS_SETFOREGROUND | DS_3DLOOK | DS_CENTER | 
+    WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "ECAT"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            IDI_COMM_LINK_2,IDC_STATIC,7,7,20,20
+    CTEXT           "Qualifying, please wait...",IDC_STATIC,32,7,108,19,
+                    SS_CENTERIMAGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDD_ECAT_EXIT           BITMAP                  "..\\res\\ex1.bmp"
+IDD_RAW_STOP            BITMAP                  "..\\res\\STOP1.bmp"
+IDD_RUN                 BITMAP                  "..\\res\\run1.bmp"
+IDD_GND                 BITMAP                  "..\\res\\EFTgnd1.bmp"
+IDD_N                   BITMAP                  "..\\res\\EFTn1.bmp"
+IDD_N_NEG               BITMAP                  "..\\res\\EFTn3.bmp"
+IDD_N_POS               BITMAP                  "..\\res\\EFTn6.bmp"
+IDD_L1                  BITMAP                  "..\\res\\EFTl1_1.bmp"
+IDD_L1_NEG              BITMAP                  "..\\res\\EFTl1_3.bmp"
+IDD_L1_POS              BITMAP                  "..\\res\\EFTl1_6.bmp"
+IDD_L2                  BITMAP                  "..\\res\\EFTl2_1.bmp"
+IDD_L2_NEG              BITMAP                  "..\\res\\EFTl2_3.bmp"
+IDD_L2_POS              BITMAP                  "..\\res\\EFTl2_6.bmp"
+IDD_L3                  BITMAP                  "..\\res\\EFTl3_1.bmp"
+IDD_L3_NEG              BITMAP                  "..\\res\\EFTl3_3.bmp"
+IDD_L3_POS              BITMAP                  "..\\res\\EFTl3_6.bmp"
+IDD_EUT_POWER           BITMAP                  "..\\res\\EUTOFF1.bmp"
+IDD_RAW_STOP_ON         BITMAP                  "..\\res\\idd_raw_.bmp"
+IDD_RUN_ON              BITMAP                  "..\\res\\idd_run_.bmp"
+IDD_EUT_POWER_RDY       BITMAP                  "..\\res\\pwr_rdy.bmp"
+IDD_EUT_POWER_ON        BITMAP                  "..\\res\\pwr_on.bmp"
+IDD_GND_NEG             BITMAP                  "..\\res\\dd_gnd_s.bmp"
+IDD_GND_POS             BITMAP                  "..\\res\\idd_gnd_.bmp"
+IDB_FRM_TOTAL           BITMAP                  "..\\res\\frm_tot.bmp"
+IDB_FRM_AUX             BITMAP                  "..\\res\\frm_aux.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PQFDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 519
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 294
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 346
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 167
+    END
+
+    IDD_PAUSE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 180
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 124
+    END
+
+    IDD_SETUP_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 169
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 132
+    END
+
+    IDD_COMMENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 218
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 92
+    END
+
+    IDD_START_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 202
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 212
+    END
+
+    IDD_POLL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 77
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 40
+    END
+
+    IDD_COMM_LINK_MSG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 26
+    END
+
+    IDD_CALIBRATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 260
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 236
+    END
+
+    IDD_INTERLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 283
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 84
+    END
+
+    IDD_TEST_UPLOAD, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 175
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 26
+    END
+
+    IDD_QUALIFYING, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 140
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 26
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,22,0,0
+ PRODUCTVERSION 5,32,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Part of the ECAT software suite"
+            VALUE "CompanyName", "Thermo Fisher Scientific"
+            VALUE "FileDescription", "PQFWare executable"
+            VALUE "FileVersion", "3, 22, 0, 0"
+            VALUE "InternalName", "PQFWare"
+            VALUE "LegalCopyright", "Copyright © 1997-2014 Thermo Fisher Scientific"
+            VALUE "OriginalFilename", "PQFWare.exe"
+            VALUE "ProductName", "KeyTek ECAT PQFWare"
+            VALUE "ProductVersion", "5, 32, 0, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

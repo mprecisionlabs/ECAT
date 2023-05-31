@@ -1,0 +1,15 @@
+E500:Name:
+Waveform:Fixed E501A:1.2/50, 8/20 Comb 2 Ohm
+Coupling:Coupler:AC ,AuxClamp:Int 20V, Data:Off
+Coupling:Fixed: L2+,PE-
+Voltage:Fixed 2000 V 
+Repeat:1
+Polarity:Alternate 5 each
+Phase:List of dg
+Phase:Step:0
+Phase:Step:90
+Phase:Step:270
+Phase:REF: L2 
+E500:Wait time  5 Seconds 
+E500:EUT power:OFF 
+E500:Order:Polarity,Phase

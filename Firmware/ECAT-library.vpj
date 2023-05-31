@@ -1,0 +1,189 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	WorkingDir=".">
+	<Config
+		Name="Release"
+		OutputFile=""
+		CompilerConfigName="MRI-ECAT">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw"
+				ShowOnMenu="Never">
+				<Exec CmdLine=""/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine=".\build-lib.bat"/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				CaptureOutputWith="ProcessBuffer"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='"ECAT-library.exe"'/>
+			</Target>
+		</Menu>
+		<Includes>
+		</Includes>
+	</Config>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl">
+			<F N="Library/Source/brst_beg.c"/>
+			<F N="Library/Source/brst_do.c"/>
+			<F N="Library/Source/brst_end.c"/>
+			<F N="Library/Source/brst_one.c"/>
+			<F N="Library/Source/brst_upd.c"/>
+			<F N="Library/Source/buf_free.c"/>
+			<F N="Library/Source/buf_init.c"/>
+			<F N="Library/Source/buf_kill.c"/>
+			<F N="Library/Source/buf_left.c"/>
+			<F N="Library/Source/buf_rchr.c"/>
+			<F N="Library/Source/buf_rset.c"/>
+			<F N="Library/Source/buf_wchr.c"/>
+			<F N="Library/Source/buffer.h"/>
+			<F N="Library/Source/burst.h"/>
+			<F N="Library/Source/csys68k.c"/>
+			<F N="Library/Source/display.h"/>
+			<F N="Library/Source/eeprom.h"/>
+			<F N="Library/Source/entry.src"/>
+			<F N="Library/Source/gpb_cavl.c"/>
+			<F N="Library/Source/gpb_dbug.c"/>
+			<F N="Library/Source/gpb_fini.c"/>
+			<F N="Library/Source/gpb_gbuf.c"/>
+			<F N="Library/Source/gpb_gchr.c"/>
+			<F N="Library/Source/gpb_init.c"/>
+			<F N="Library/Source/gpb_intr.c"/>
+			<F N="Library/Source/gpb_rsrq.c"/>
+			<F N="Library/Source/gpb_rsts.c"/>
+			<F N="Library/Source/gpb_sbuf.c"/>
+			<F N="Library/Source/gpb_ssrq.c"/>
+			<F N="Library/Source/gpb_ssts.c"/>
+			<F N="Library/Source/gpb_wgpb.c"/>
+			<F N="Library/Source/gpb_wsrq.c"/>
+			<F N="Library/Source/gpib.h"/>
+			<F N="Library/Source/key.h"/>
+			<F N="Library/Source/key_beep.c"/>
+			<F N="Library/Source/key_led.c"/>
+			<F N="Library/Source/key_rchr.c"/>
+			<F N="Library/Source/key_rled.c"/>
+			<F N="Library/Source/key_rraw.c"/>
+			<F N="Library/Source/key_rset.c"/>
+			<F N="Library/Source/key_trap.c"/>
+			<F N="Library/Source/key_wait.c"/>
+			<F N="Library/Source/lcd_bmap.c"/>
+			<F N="Library/Source/lcd_box.c"/>
+			<F N="Library/Source/lcd_crcl.c"/>
+			<F N="Library/Source/lcd_curs.c"/>
+			<F N="Library/Source/lcd_draw.c"/>
+			<F N="Library/Source/lcd_getx.c"/>
+			<F N="Library/Source/lcd_gety.c"/>
+			<F N="Library/Source/lcd_goxy.c"/>
+			<F N="Library/Source/lcd_krnl.c"/>
+			<F N="Library/Source/lcd_line.c"/>
+			<F N="Library/Source/lcd_lite.c"/>
+			<F N="Library/Source/lcd_norm.c"/>
+			<F N="Library/Source/lcd_putc.c"/>
+			<F N="Library/Source/lcd_puts.c"/>
+			<F N="Library/Source/lcd_rset.c"/>
+			<F N="Library/Source/mem_read.c"/>
+			<F N="Library/Source/mem_wrte.c"/>
+			<F N="Library/Source/parser.h"/>
+			<F N="Library/Source/period.h"/>
+			<F N="Library/Source/pit_init.c"/>
+			<F N="Library/Source/qsm.h"/>
+			<F N="Library/Source/qsm_12st.c"/>
+			<F N="Library/Source/qsm_davg.c"/>
+			<F N="Library/Source/qsm_dmax.c"/>
+			<F N="Library/Source/qsm_dmin.c"/>
+			<F N="Library/Source/qsm_drms.c"/>
+			<F N="Library/Source/qsm_drst.c"/>
+			<F N="Library/Source/qsm_dset.c"/>
+			<F N="Library/Source/qsm_eclc.c"/>
+			<F N="Library/Source/qsm_halt.c"/>
+			<F N="Library/Source/qsm_init.c"/>
+			<F N="Library/Source/qsm_read.c"/>
+			<F N="Library/Source/qsm_sclc.c"/>
+			<F N="Library/Source/qsm_trap.c"/>
+			<F N="Library/Source/sci_cavl.c"/>
+			<F N="Library/Source/sci_init.c"/>
+			<F N="Library/Source/sci_kill.c"/>
+			<F N="Library/Source/sci_rx.c"/>
+			<F N="Library/Source/sci_trap.c"/>
+			<F N="Library/Source/sci_tx.c"/>
+			<F N="Library/Source/serint.c"/>
+			<F N="Library/Source/serint.h"/>
+			<F N="Library/Source/switches.h"/>
+			<F N="Library/Source/timer.h"/>
+			<F N="Library/Source/tpu_chin.c"/>
+			<F N="Library/Source/tpu_dint.c"/>
+			<F N="Library/Source/tpu_dlay.c"/>
+			<F N="Library/Source/tpu_efrq.c"/>
+			<F N="Library/Source/tpu_init.c"/>
+			<F N="Library/Source/tpu_intr.c"/>
+			<F N="Library/Source/tpu_kill.c"/>
+			<F N="Library/Source/tpu_list.c"/>
+			<F N="Library/Source/tpu_pint.c"/>
+			<F N="Library/Source/tpu_pwm.c"/>
+			<F N="Library/Source/tpu_read.c"/>
+			<F N="Library/Source/tpu_revt.c"/>
+			<F N="Library/Source/tpu_rfrq.c"/>
+			<F N="Library/Source/tpu_sevt.c"/>
+			<F N="Library/Source/tpu_sfrq.c"/>
+			<F N="Library/Source/tpu_shot.c"/>
+			<F N="Library/Source/tpu_sph.c"/>
+			<F N="Library/Source/tpu_spwm.c"/>
+			<F N="Library/Source/tpu_tcr1.c"/>
+			<F N="Library/Source/tpu_trap.c"/>
+			<F N="Library/Source/tpu_trig.c"/>
+			<F N="Library/Source/tpu_wrte.c"/>
+			<F N="Library/Source/trp_hndl.c"/>
+			<F N="Library/Source/trp_hndl.src"/>
+			<F N="Library/Source/vectors.h"/>
+			<F N="Library/Source/yy_error.c"/>
+			<F N="Library/Source/yy_lex.c"/>
+			<F N="Library/Source/yy_lprse.c"/>
+			<F N="Library/Source/yy_parse.c"/>
+			<F N="Library/Source/yy_reprt.c"/>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters=""/>
+	</Files>
+</Project>

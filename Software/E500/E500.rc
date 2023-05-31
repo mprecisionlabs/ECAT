@@ -1,0 +1,970 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APP                 ICON    DISCARDABLE     "..\\res\\E500_app.ico"
+IDI_LIMIT               ICON    DISCARDABLE     "..\\res\\BLICON.ICO"
+IDI_DURATION            ICON    DISCARDABLE     "..\\res\\BDICON.ico"
+IDI_PERIOD              ICON    DISCARDABLE     "..\\res\\BRICON.ICO"
+IDI_FREQUENCY           ICON    DISCARDABLE     "..\\res\\BPICON.ico"
+IDI_EX_POINT            ICON    DISCARDABLE     "..\\res\\Bexpicon.ico"
+IDI_STOP                ICON    DISCARDABLE     "..\\res\\Bhandico.ico"
+IDI_NEG_V               ICON    DISCARDABLE     "..\\res\\Bmvicon.ico"
+IDI_PHASE               ICON    DISCARDABLE     "..\\res\\Bphicon.ico"
+IDI_POS_V               ICON    DISCARDABLE     "..\\res\\Bpvicon.ico"
+IDI_REPEAT              ICON    DISCARDABLE     "..\\res\\Brepicon.ico"
+IDI_VOLTAGE             ICON    DISCARDABLE     "..\\res\\Bvicon.ico"
+IDI_POLARITY            ICON    DISCARDABLE     "..\\res\\Bvpicon.ico"
+IDI_WAVE                ICON    DISCARDABLE     "..\\res\\waicon.ico"
+IDI_POS_SWITCH          ICON    DISCARDABLE     "..\\res\\swicon.ico"
+IDI_NEG_SWITCH          ICON    DISCARDABLE     "..\\res\\nswicon.ico"
+IDI_COMM_LINK_2         ICON    DISCARDABLE     "..\\res\\com_lnk2.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CUR_VOLTAGE         CURSOR  DISCARDABLE     "..\\res\\bvcur.cur"
+IDC_CUR_POS_V           CURSOR  DISCARDABLE     "..\\res\\bpvcur.cur"
+IDC_CUR_NEG_V           CURSOR  DISCARDABLE     "..\\res\\bmvcur.cur"
+IDC_CUR_PHASE           CURSOR  DISCARDABLE     "..\\res\\bphcur.cur"
+IDC_CUR_REPEAT          CURSOR  DISCARDABLE     "..\\res\\brepeat.cur"
+IDC_CUR_POLARITY        CURSOR  DISCARDABLE     "..\\res\\bpolcur.cur"
+IDC_CUR_FREQUENCY       CURSOR  DISCARDABLE     "..\\res\\bpcur.cur"
+IDC_CUR_DURATION        CURSOR  DISCARDABLE     "..\\res\\bdurcur.cur"
+IDC_CUR_PERIOD          CURSOR  DISCARDABLE     "..\\res\\brcur.cur"
+IDC_CUR_WAVE            CURSOR  DISCARDABLE     "..\\res\\wacursor.CUR"
+IDC_CUR_SWITCH          CURSOR  DISCARDABLE     "..\\res\\boldsw.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAIN_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New",                        IDM_NEW
+        MENUITEM "&Open...",                    IDM_OPEN
+        MENUITEM "&Save",                       IDM_SAVE
+        MENUITEM "Save &As...",                 IDM_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",                       2
+    END
+    POPUP "Log [ON]"
+    BEGIN
+        MENUITEM "Logging On",                  IDM_LON
+        MENUITEM "Logging Off",                 IDM_LOFF
+        MENUITEM SEPARATOR
+        MENUITEM "&Setup",                      IDM_LSET
+    END
+    POPUP "&Test"
+    BEGIN
+        MENUITEM "&Rename...",                  IDM_NAME
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents",                   IDM_HELP_CONTENTS
+        MENUITEM SEPARATOR
+        MENUITEM "&About...",                   IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_E500_ACL ACCELERATORS DISCARDABLE 
+BEGIN
+    "A",            173,                    VIRTKEY, SHIFT, ALT
+    "A",            174,                    VIRTKEY, ALT
+    "I",            173,                    VIRTKEY, ALT
+    "I",            173,                    VIRTKEY, SHIFT, ALT
+    "D",            138,                    VIRTKEY, ALT
+    "D",            138,                    VIRTKEY, SHIFT, ALT
+    "C",            2,                      VIRTKEY, ALT
+    "C",            2,                      VIRTKEY, SHIFT, ALT
+    "1",            107,                    VIRTKEY, ALT
+    "2",            108,                    VIRTKEY, ALT
+    "3",            109,                    VIRTKEY, ALT
+    "N",            106,                    VIRTKEY, ALT
+    "N",            106,                    VIRTKEY, SHIFT, ALT
+    "G",            105,                    VIRTKEY, ALT
+    "G",            105,                    VIRTKEY, SHIFT, ALT
+    "F",            104,                    VIRTKEY, ALT
+    "F",            104,                    VIRTKEY, SHIFT, ALT
+    "O",            103,                    VIRTKEY, ALT
+    "O",            103,                    VIRTKEY, SHIFT, ALT
+    "M",            102,                    VIRTKEY, ALT
+    "M",            102,                    VIRTKEY, SHIFT, ALT
+    "R",            101,                    VIRTKEY, ALT
+    "R",            101,                    VIRTKEY, SHIFT, ALT
+    "E",            210,                    VIRTKEY, ALT
+    "E",            210,                    VIRTKEY, SHIFT, ALT
+    "P",            210,                    VIRTKEY, ALT
+    "P",            210,                    VIRTKEY, SHIFT, ALT
+    "D",            999,                    VIRTKEY, ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_E500DLG DIALOGEX 0, 0, 382, 334
+STYLE DS_CENTER | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_REPEAT_BASE,"Static",SS_GRAYRECT | WS_GROUP | 
+                    WS_TABSTOP,6,196,77,23,WS_EX_TRANSPARENT
+    GROUPBOX        "Measurement",IDC_STATIC,89,222,238,50,WS_GROUP | 
+                    WS_TABSTOP
+    CONTROL         "",IDD_WAIT_SB,"SSCROLLBAR",0x0,10,235,47,9
+    EDITTEXT        IDD_WAIT_EB,58,234,22,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    COMBOBOX        IDD_WAIT_CB,10,252,28,43,CBS_DROPDOWNLIST | WS_TABSTOP
+    CONTROL         "run",IDD_RUN,"Button",BS_OWNERDRAW | WS_TABSTOP,18,287,
+                    30,14
+    CONTROL         "stop",IDD_RAW_STOP,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    62,287,29,14
+    PUSHBUTTON      "eut",IDD_EUT_POWER,336,234,35,15
+    PUSHBUTTON      "&Comment",IDD_ECAT_COMM,331,265,45,21,WS_DISABLED
+    PUSHBUTTON      "Exit",IDD_ECAT_EXIT,331,290,35,17
+    CONTROL         "",IDC_MAINFRM_BASE,"Static",SS_GRAYRECT | WS_GROUP,95,
+                    25,273,187,WS_EX_TRANSPARENT
+    GROUPBOX        "Time Between Tests",IDC_STATIC,6,222,77,50
+    RTEXT           "",IDD_BETWEEN_TEXT,40,256,39,8
+    CTEXT           "Text",IDD_ACTION_TEXT,185,315,191,13,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    LTEXT           "Total Test Times:",IDD_TOTAL_TEST,78,315,106,13,
+                    SS_CENTERIMAGE | SS_SUNKEN
+    LTEXT           "Total Tests:",IDD_TOTAL_N,6,315,70,13,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    LTEXT           "Comments:",IDC_STATIC,86,126,36,8,NOT WS_VISIBLE
+    EDITTEXT        IDD_NAME_TEXT,130,124,241,12,NOT WS_VISIBLE
+    GROUPBOX        "Order",IDD_ORDER,6,13,77,179,WS_GROUP | WS_TABSTOP
+    GROUPBOX        "",IDC_ORDER_BASE,13,23,63,162,BS_FLAT,WS_EX_TRANSPARENT
+    GROUPBOX        "Pulse",IDD_MAIN_FRAME,89,13,287,206,WS_GROUP | 
+                    WS_TABSTOP
+    GROUPBOX        "EUT power",IDD_EUT_GB,331,222,45,35,WS_TABSTOP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,6,370,1
+    GROUPBOX        "Test controls",IDC_STATIC,6,276,102,33
+END
+
+IDD_DUAL DIALOGEX 0, 0, 275, 39
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE | WS_BORDER
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Not Fixed",IDD_TEXT_HI,3,3,33,8
+    LTEXT           "Fixed",IDD_TEXT_LO,3,3,33,8
+    ICON            IDI_VOLTAGE,IDD_ICON,3,13,20,20
+    LISTBOX         IDD_LIST,37,4,68,39,LBS_OWNERDRAWFIXED | NOT WS_BORDER | 
+                    WS_VSCROLL,WS_EX_STATICEDGE
+    EDITTEXT        IDD_RUN_EDIT,109,3,36,10,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    LTEXT           "Value",IDD_RUN_TEXT,147,3,18,10
+    CONTROL         "",IDD_START_SB,"SSCROLLBAR",0x0,29,14,76,10
+    EDITTEXT        IDD_START_EDIT,109,14,36,10,NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    LTEXT           "Start",IDD_START_TXT,147,14,18,10
+    PUSHBUTTON      "&Insert",IDD_INSERT,109,10,36,12
+    CONTROL         "",IDD_STOP_SB,"SSCROLLBAR",0x0,29,25,76,10
+    EDITTEXT        IDD_STOP_EDIT,109,25,36,10,NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    LTEXT           "Stop",IDD_STOP_TXT,147,25,18,10
+    CONTROL         "",IDD_SINGLE_SB,"SSCROLLBAR",0x0,29,25,76,10
+    EDITTEXT        IDD_SINGLE_EDIT,109,25,36,10,NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "&Delete",IDD_DELETE,109,23,36,12
+    CONTROL         "",IDD_VAL_SCROLL,"SSCROLLBAR",0x0,157,3,75,10
+    EDITTEXT        IDD_VAL_EDIT,236,3,36,10,NOT WS_BORDER,WS_EX_STATICEDGE
+    LTEXT           "filler2",IDD_STEP_TXT2,179,5,43,8
+    PUSHBUTTON      "X",IDD_STEP_BUTTON,167,15,9,8
+    LTEXT           "filler1",IDD_STEPS_TXT,179,15,26,8
+    EDITTEXT        IDD_STEPS_EDIT,179,24,28,12,ES_NUMBER | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    LTEXT           "Mode:",IDD_MODE_TXT,210,15,21,8
+    LTEXT           "Text",IDD_MODE_LAB,210,24,30,8
+    COMBOBOX        IDD_MODE1_CB,209,24,34,88,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "Extra",IDD_EXTRA_TEXT,245,15,27,8
+    LTEXT           "Text",IDD_EXTRA_LAB,245,24,30,8
+    COMBOBOX        IDD_EXTRA_CB,244,24,30,54,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME | WS_GROUP,0,0,275,
+                    39,WS_EX_TRANSPARENT
+END
+
+IDD_REPEATDLG DIALOGEX 0, 0, 77, 23
+STYLE DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDD_EDIT,36,4,22,12,ES_NUMBER | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    LTEXT           "Repeat",IDD_REPEAT_LAB,5,7,27,8
+    CONTROL         "Spin1",IDD_SPIN,"msctls_updown32",UDS_ARROWKEYS,59,4,9,
+                    12
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME | WS_GROUP,0,0,77,
+                    23,WS_EX_TRANSPARENT
+END
+
+IDD_CHOOSE_COUPLER DIALOGEX 0, 0, 270, 93
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "Choose a coupler:"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Ok",IDOK,113,73,43,14
+    LTEXT           "More than One Coupler is Available in this system.",
+                    IDC_STATIC,6,6,166,10
+    LTEXT           "You must choose one:",IDC_STATIC,6,17,163,9
+    LISTBOX         IDD_CHO_LIST,6,30,258,35,LBS_HASSTRINGS | 
+                    LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | NOT 
+                    WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+END
+
+IDD_CHOOSE_EFT_MODULE DIALOGEX 0, 0, 270, 93
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "Choose an EFT Generator:"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDD_CHO_LIST,6,30,258,35,LBS_HASSTRINGS | 
+                    LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | NOT 
+                    WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "Ok",IDOK,113,72,44,14
+    LTEXT           "More than One EFT Generator is Available in this system",
+                    -1,6,6,194,10
+    LTEXT           "You must choose one.",-1,6,18,163,9
+END
+
+IDD_LIMIT DIALOG DISCARDABLE  0, 0, 142, 71
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Limit Exceeded Pause"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Limit Exceeded Do you want to:",-1,6,33,130,9
+    DEFPUSHBUTTON   "&Run",IDC_BUT_RUN,6,51,41,14
+    PUSHBUTTON      "&Stop",IDC_BUT_STOP,95,51,41,14
+    LTEXT           "Or",-1,64,54,16,8
+    LTEXT           "Text",IDD_LIMIT_TEXT,6,6,130,8
+END
+
+IDD_AC_LIMIT DIALOGEX 0, 0, 188, 99
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Limits"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDD_PMAX_SB,"SSCROLLBAR",0x0,58,16,75,10
+    EDITTEXT        IDD_PMAX_EB,146,14,36,13,ES_MULTILINE | ES_NUMBER | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "",IDD_RMAX_SB,"SSCROLLBAR",0x0,58,32,75,10
+    EDITTEXT        IDD_RMAX_EB,146,31,36,13,ES_MULTILINE | ES_NUMBER | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "",IDD_RMIN_SB,"SSCROLLBAR",0x0,58,48,75,10
+    EDITTEXT        IDD_RMIN_EB,146,47,36,13,ES_MULTILINE | ES_NUMBER | NOT 
+                    WS_BORDER,WS_EX_STATICEDGE
+    LTEXT           "Peak Max",IDC_STATIC,7,17,34,8
+    LTEXT           "RMS Max",IDC_STATIC,7,33,33,8
+    LTEXT           "RMS Min",IDC_STATIC,7,49,30,8
+    PUSHBUTTON      "Cancel",IDCANCEL,102,78,47,14
+    DEFPUSHBUTTON   "Ok",IDOK,39,78,47,14
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,69,176,1
+END
+
+IDD_EFT_COUPLE DIALOGEX 0, 0, 275, 39
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Coupling",IDD_WIN_TEXT,3,3,28,8
+    ICON            333,IDD_ICON,3,13,20,20
+    PUSHBUTTON      "L&1",IDD_L1,31,13,34,15
+    PUSHBUTTON      "L&2",IDD_L2,66,13,34,14
+    PUSHBUTTON      "L&3",IDD_L3,101,13,34,14
+    PUSHBUTTON      "&N",IDD_N,136,13,34,14
+    PUSHBUTTON      "&GND",IDD_GND,171,13,34,14
+    LISTBOX         IDD_LIST,37,4,164,34,LBS_OWNERDRAWFIXED | NOT WS_BORDER | 
+                    WS_VSCROLL,WS_EX_STATICEDGE
+    LTEXT           "Mode:",IDD_TEXT,210,2,26,8
+    COMBOBOX        IDD_CB,209,11,65,80,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Delete",IDD_DELETE,209,25,30,12
+    PUSHBUTTON      "&Insert",IDD_INSERT,244,25,30,12
+    LTEXT           "Front Panel",IDD_MODE_LAB,211,14,50,8
+    LTEXT           "",IDD_INVALID,36,5,124,8
+    LTEXT           "Output at the module front panel only",IDD_FRONT_LAB,38,
+                    16,139,8
+    LTEXT           "Coupler",IDD_COUPLER_TEXT,34,-1,30,8,NOT WS_VISIBLE
+    COMBOBOX        IDD_COUPLER,33,9,41,70,CBS_DROPDOWNLIST | NOT WS_VISIBLE | 
+                    WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME | WS_GROUP,0,0,275,
+                    39
+END
+
+IDD_SRG_COUPLE DIALOGEX 0, 0, 275, 54
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "Coupling",IDD_WIN_TEXT,3,3,28,8
+    ICON            IDI_POS_SWITCH,IDD_ICON,3,13,20,20
+    COMBOBOX        IDD_COUPLER,34,11,41,70,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "INT 20V",IDD_AUX,96,11,42,12
+    PUSHBUTTON      "Off",IDD_DATABTN,163,11,29,12
+    COMBOBOX        IDD_CB,212,11,61,80,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "L&1",IDD_L1,34,26,34,14
+    PUSHBUTTON      "L&2",IDD_L2,69,26,34,14
+    PUSHBUTTON      "L&3",IDD_L3,104,26,34,14
+    PUSHBUTTON      "&N",IDD_N,139,26,34,14
+    PUSHBUTTON      "&GND",IDD_GND,174,26,34,14
+    PUSHBUTTON      "S&1",IDD_S1,34,26,34,14,NOT WS_VISIBLE
+    PUSHBUTTON      "S&2",IDD_S2,69,26,34,14,NOT WS_VISIBLE
+    PUSHBUTTON      "S&3",IDD_S3,104,26,34,14,NOT WS_VISIBLE
+    PUSHBUTTON      "S&4",IDD_S4,139,26,34,14,NOT WS_VISIBLE
+    PUSHBUTTON      "&G",IDD_G,174,26,34,14,NOT WS_VISIBLE
+    LISTBOX         IDD_LIST,34,26,174,25,LBS_OWNERDRAWFIXED | NOT WS_BORDER | 
+                    WS_VSCROLL,WS_EX_STATICEDGE
+    PUSHBUTTON      "&Asymm",IDD_CMODEBTN,212,25,31,13,NOT WS_VISIBLE
+    PUSHBUTTON      "&Insert",IDD_INSERT,243,25,30,12
+    PUSHBUTTON      "&Delete",IDD_DELETE,243,39,30,12
+    LTEXT           "Mode:",IDD_TEXT,212,3,26,8
+    LTEXT           "Front Panel",IDD_MODE_LAB,212,11,57,8
+    LTEXT           "Coupler",IDD_COUPLER_TEXT,34,3,30,8
+    LTEXT           "AUX Clamp",IDD_AUX_TEXT,99,3,38,8
+    LTEXT           "Data",IDD_DATA_TEXT,163,3,21,8
+    LTEXT           "Output at the module front panel only",IDD_FRONT_LAB,35,
+                    30,139,8
+    LTEXT           "",IDD_INVALID,35,44,124,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME | WS_GROUP,0,0,275,
+                    54
+END
+
+IDD_WAVE DIALOGEX 0, 0, 275, 54
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDD_PLUGIN,33,11,41,70,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDD_WAVE,79,11,128,70,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDD_CB,212,11,61,57,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LISTBOX         IDD_LIST,34,26,173,26,LBS_OWNERDRAWFIXED | 
+                    LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | 
+                    WS_VSCROLL,WS_EX_STATICEDGE
+    PUSHBUTTON      "&Insert",IDD_INSERT,243,25,30,12
+    PUSHBUTTON      "&Delete",IDD_DELETE,243,39,30,12
+    CONTROL         "Surge",IDC_STATIC,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,
+                    3,3,26,8
+    ICON            IDI_WAVE,IDD_ICON,3,13,20,20
+    LTEXT           "Waveform",IDD_WIN_TEXT,79,3,46,8
+    LTEXT           "Network",IDC_STATIC,33,3,41,8
+    LTEXT           "Mode:",IDD_MODE_TEXT,212,3,26,8
+    LTEXT           "Fixed",IDD_MODE_LAB,212,13,29,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDFRAME | WS_GROUP,0,0,275,
+                    54
+END
+
+IDD_ABOUT DIALOGEX 0, 0, 364, 167
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "About SurgeWare"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    LTEXT           "TEXT",IDD_ABT_LABEL,57,3,188,37
+    DEFPUSHBUTTON   "Ok",IDOK,313,3,45,14
+    ICON            IDI_APP,IDC_STATIC,6,3,21,20
+    LTEXT           "Revision:",IDD_ABT_REV,58,53,167,8
+    LTEXT           "Device:",IDD_ABT_NAME,58,42,167,8
+    LTEXT           "Serial Number:",IDD_ABT_SN,58,64,167,8
+    LTEXT           "Modules Loaded:",IDC_STATIC,6,81,65,8
+    EDITTEXT        IDD_ABT_LIST,6,96,352,65,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL,WS_EX_STATICEDGE
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,75,352,1
+END
+
+IDD_PAUSE DIALOGEX 0, 0, 186, 130
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Operator Pause"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CTEXT           "ECAT Paused",IDC_STATIC,6,6,174,8
+    PUSHBUTTON      "&Run",IDC_BUT_RUN,6,28,45,14
+    LTEXT           "Press:",IDC_STATIC,8,18,121,8
+    PUSHBUTTON      "&Stop",IDC_BUT_STOP,6,60,45,14
+    LTEXT           "to Continue Running",IDC_STATIC,57,31,81,8
+    LTEXT           "Comment for the Log:",104,6,81,103,8
+    EDITTEXT        IDC_EDIT_LOG,6,91,174,34,ES_MULTILINE | ES_WANTRETURN | 
+                    NOT WS_BORDER | WS_VSCROLL,WS_EX_STATICEDGE
+    LTEXT           "to Abort the Test",IDC_STATIC,57,63,56,8
+    LTEXT           "or",IDC_STATIC,6,47,16,8
+END
+
+IDD_SETUP_LOG DIALOGEX 18, 18, 175, 138
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Logfile Setup"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        LSDLG_NAME,6,18,123,12,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      "Select",LSDLG_SELECT,131,17,38,14
+    GROUPBOX        "Actions",IDC_STATIC,6,52,78,59
+    CONTROL         "Append",LSDLG_APPEND,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,18,63,54,12
+    CONTROL         "Rewrite",LSDLG_REWRITE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,18,78,54,12
+    CONTROL         "Inc Name",LSDLG_INCNAME,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED | WS_TABSTOP,18,93,54,12
+    GROUPBOX        "Output Format",IDC_STATIC,90,52,79,59
+    CONTROL         "Text",LSDLG_TEXT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,112,67,46,12
+    CONTROL         "Export",LSDLG_EXPORT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,112,87,46,12
+    DEFPUSHBUTTON   "OK",IDOK,33,117,46,14
+    PUSHBUTTON      "Cancel",IDCANCEL,95,117,46,14
+    LTEXT           "Existing File:",IDC_STATIC,6,39,51,8
+    LTEXT           "Log File Name",IDC_STATIC,6,6,75,8
+END
+
+IDD_TEST_NAME DIALOGEX 0, 0, 277, 52
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION
+CAPTION "Test Name"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDD_NAME_TEXT,6,6,265,14,NOT WS_BORDER,WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "OK",IDOK,76,31,54,14
+    PUSHBUTTON      "Cancel",IDCANCEL,146,31,54,14
+END
+
+IDD_COMMENT DIALOGEX 0, 0, 224, 98
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "Comment"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,62,79,42,14
+    PUSHBUTTON      "Cancel",IDCANCEL,120,79,42,14
+    EDITTEXT        LCDLG_TEXT,6,18,212,54,ES_MULTILINE | ES_WANTRETURN | 
+                    NOT WS_BORDER | WS_VSCROLL,WS_EX_STATICEDGE
+    LTEXT           "Comment for the Log",IDC_STATIC,6,6,129,8
+END
+
+IDD_START_LOG DIALOGEX 0, 0, 208, 218
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Logfile Start"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        LSDLG_NAME,6,18,155,13,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      "Select",LSDLG_SELECT,163,17,39,14
+    GROUPBOX        "File Mode",120,6,36,196,27
+    GROUPBOX        "Format",IDC_STATIC,6,66,196,23
+    EDITTEXT        LSDLG_OPERATOR,6,103,196,13,NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        LSDLG_EUT,6,132,196,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        LSDLG_COMMENT,6,159,196,29,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_WANTRETURN | NOT WS_BORDER | WS_VSCROLL,
+                    WS_EX_STATICEDGE
+    DEFPUSHBUTTON   "OK",IDOK,10,198,56,14
+    PUSHBUTTON      "Cancel",IDCANCEL,76,198,56,14
+    PUSHBUTTON      "No Logfile",LSDLG_NOLOG,142,198,56,14
+    CONTROL         "Append",LSDLG_APPEND,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,15,49,51,8
+    CONTROL         "Rewrite",LSDLG_REWRITE,"Button",BS_AUTORADIOBUTTON,79,
+                    49,51,8
+    CONTROL         "IncName",LSDLG_INCNAME,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,143,49,51,8
+    CONTROL         "Text",LSDLG_TEXT,"Button",BS_AUTORADIOBUTTON | WS_GROUP,
+                    42,75,51,9
+    CONTROL         "Export",LSDLG_EXPORT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_TABSTOP,119,75,51,9
+    LTEXT           "Log File Name:",IDC_STATIC,6,6,64,8
+    LTEXT           "Operator",IDC_STATIC,6,92,30,8
+    LTEXT           "EUT Name",IDC_STATIC,6,122,48,8
+    LTEXT           "Comments",IDC_STATIC,6,151,46,8
+END
+
+IDD_MEASURE DIALOGEX 0, 0, 232, 40
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    COMBOBOX        IDD_MEAS_BAY,2,10,36,96,CBS_DROPDOWNLIST | WS_TABSTOP
+    COMBOBOX        IDD_VSETCB,38,10,32,68,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDD_ISETCB,38,22,32,68,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDD_VSETP,72,10,27,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      ">",IDD_PVGT,99,11,9,11
+    EDITTEXT        IDD_ISETP,72,22,27,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      ">",IDD_PIGT,99,23,9,11
+    EDITTEXT        IDD_VREADP,109,10,34,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_IREADP,109,22,34,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_VSETM,146,10,28,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      ">",IDD_MVGT,174,11,9,11
+    EDITTEXT        IDD_ISETM,146,22,28,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      ">",IDD_MIGT,174,23,9,11
+    EDITTEXT        IDD_VREADM,184,10,33,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_IREADM,184,22,33,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    LTEXT           "Limit+",IDD_SETPLAB,78,1,21,8
+    LTEXT           "Limit-",IDD_SETMLAB,152,1,30,8
+    LTEXT           "Peak+",IDD_PKPLAB,115,1,21,8
+    LTEXT           "Peak-",IDD_PKMLAB,190,1,27,8
+    CTEXT           "V",IDD_VLAB1,219,12,8,8
+    CTEXT           "A",IDD_ILAB1,219,24,8,8
+    LTEXT           "Measurement:",IDD_SETLAB,3,1,46,8,NOT WS_VISIBLE
+END
+
+IDD_POLL DIALOG DISCARDABLE  0, 0, 80, 18
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "DUMMY"
+FONT 8, "MS Sans Serif"
+BEGIN
+END
+
+IDD_AC_MEASURE DIALOGEX 0, 0, 199, 35
+STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_VISIBLE
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDD_PEAK1,1,8,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_RMS1,31,8,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_PEAK2,64,8,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_RMS2,94,8,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_PEAK3,126,8,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_RMS3,156,8,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "&Limits",IDD_LIMBTN,1,21,30,13
+    EDITTEXT        IDD_PLIM,71,21,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDD_RLIM,156,21,29,12,ES_READONLY | NOT WS_BORDER,
+                    WS_EX_STATICEDGE
+    CTEXT           "A",IDC_STATIC,188,9,8,8
+    LTEXT           "L1 Peak",IDC_STATIC,1,0,29,8
+    LTEXT           "L2 Peak",IDC_STATIC,63,0,28,8
+    LTEXT           "L3 Peak",IDC_STATIC,125,0,30,8
+    LTEXT           "RMS",IDC_STATIC,32,0,17,8
+    LTEXT           "RMS",IDC_STATIC,94,0,19,8
+    LTEXT           "RMS",IDC_STATIC,156,0,17,8
+    LTEXT           "Peak Max",IDC_STATIC,36,22,34,8
+    LTEXT           "Rms Max",IDC_STATIC,121,22,32,8
+    CTEXT           "A",IDC_STATIC,188,22,8,8
+    CTEXT           "A",IDC_STATIC,103,23,8,8
+END
+
+IDD_INTERLOCK DIALOGEX 0, 0, 289, 90
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "INTERLOCK"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    ICON            "",IDC_ILOCK_ICON,14,22,21,20
+    PUSHBUTTON      "&Abort",IDABORT,83,70,53,14
+    DEFPUSHBUTTON   "&Retry",IDRETRY,152,70,53,14
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,6,63,277,1
+    EDITTEXT        IDC_EDIT_INFO,45,5,238,52,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER | WS_HSCROLL,WS_EX_STATICEDGE
+END
+
+IDD_CALIBRATE DIALOGEX 0, 0, 266, 242
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Module Setup Dialog"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Module",IDC_STATIC,6,6,109,42,WS_GROUP
+    CONTROL         "Left",IDD_LEFT_MOD,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,21,18,26,10
+    CONTROL         "Right",IDD_RIGHT_MOD,"Button",BS_AUTORADIOBUTTON,57,18,
+                    30,10
+    EDITTEXT        IDD_MODULE_EDIT,47,30,25,12,ES_READONLY | ES_NUMBER | 
+                    NOT WS_BORDER,WS_EX_STATICEDGE
+    CONTROL         "SPIN1",IDD_MOD_SPIN,"msctls_updown32",UDS_SETBUDDYINT | 
+                    UDS_AUTOBUDDY,74,30,11,12
+    COMBOBOX        IDD_NAME_COMBO,13,70,44,68,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDD_ID_EDIT,65,70,43,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDD_SERN_EDIT,65,90,43,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    EDITTEXT        IDD_CAL_EDIT,15,127,41,12,NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      " &Apply",IDD_SET_CAL,63,127,42,13
+    LISTBOX         IDD_CAL_LIST,13,144,92,53,NOT WS_BORDER | WS_VSCROLL,
+                    WS_EX_STATICEDGE
+    CONTROL         "Surge Coupler",IDD_SRGCPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,18,58,8
+    CONTROL         "Surge",IDD_SURGE_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,17,60,8
+    CONTROL         "EFT Coupler",IDD_EFT_CPL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,29,58,8
+    CONTROL         "EFT",IDD_EFT_TYPE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    197,28,60,8
+    CONTROL         "Line Coupler",IDD_ACCPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,40,58,8
+    CONTROL         "PQF ",IDD_PQF_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,39,60,8
+    CONTROL         "HV Coupler",IDD_HVCPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,51,58,8
+    CONTROL         "Power",IDD_POWER_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,50,60,8
+    CONTROL         "IO Coupler ",IDD_DATACPL_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,62,58,8
+    CONTROL         "Amplifier",IDD_AMP_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,61,60,8
+    CONTROL         "Three Phase ",IDD_THREE_PHASE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,73,58,8
+    CONTROL         "Impedance",IDD_IMPED_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,197,72,60,8
+    CONTROL         "EMC Clamp",IDD_CLAMP_TYPE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,84,58,8
+    CONTROL         "ESD",IDD_ESD_TYPE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    197,83,60,8
+    LTEXT           "Text",IDD_TYPE_TEXT,127,98,25,8
+    CONTROL         "EFT 2MHz",IDD_EFT2M,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,126,50,10
+    CONTROL         "DC Option",IDD_SRGDC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,126,45,10
+    CONTROL         "EFT 8KV",IDD_EFT_8KV,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,137,50,10
+    CONTROL         "AC Option",IDD_ACOPT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,137,45,10
+    CONTROL         "EFT CHIRP",IDD_EFT_CHIRP,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,148,50,10
+    CONTROL         "Allow EHV",IDD_EHVSUPPORT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,148,45,10
+    CONTROL         "SW E502",IDD_SW_E502,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,127,159,50,10
+    CONTROL         "5 Channel",IDD_5CHAN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,198,159,45,10
+    PUSHBUTTON      "&Set",IDD_SET,12,214,47,16
+    PUSHBUTTON      "Save &CFG ",IDD_SAVE_CFG,149,215,47,16
+    PUSHBUTTON      "Close",IDCANCEL,205,215,47,16
+    GROUPBOX        "Options",IDC_STATIC,121,114,139,86,WS_GROUP
+    GROUPBOX        "Types",IDC_STATIC,121,6,139,104,WS_GROUP
+    GROUPBOX        "",IDC_STATIC,6,50,109,60,WS_GROUP
+    GROUPBOX        "Cal Values",IDD_MISC,6,114,109,86,WS_GROUP
+    GROUPBOX        "",IDC_STATIC,6,204,254,33,WS_GROUP
+    LTEXT           "Values are permanent",IDC_STATIC,65,217,74,8
+    LTEXT           "Row:",IDC_STATIC,21,32,16,8
+    LTEXT           "Module ID",IDC_STATIC,67,60,39,8
+    LTEXT           "V Meas.",IDC_STATIC,126,170,30,8
+    LTEXT           "I Meas.",IDC_STATIC,197,170,31,8
+    LTEXT           "Module Name",IDC_STATIC,13,60,46,8
+    LTEXT           "Serial #",IDC_STATIC,25,92,33,8
+    CONTROL         "SPIN2",IDD_VM_SPIN,"msctls_updown32",0x0,164,180,11,12
+    CONTROL         "SPIN3",IDD_IM_SPIN,"msctls_updown32",0x0,234,180,11,12
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDVERT,139,209,1,28
+    EDITTEXT        IDD_VM_TEXT,127,180,36,12,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+    EDITTEXT        IDD_IM_TEXT,197,180,36,12,ES_AUTOHSCROLL | ES_READONLY | 
+                    NOT WS_BORDER | NOT WS_TABSTOP,WS_EX_STATICEDGE
+END
+
+IDD_COMM_LINK_MSG DIALOGEX 0, 0, 226, 33
+STYLE DS_MODALFRAME | DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "ECAT"
+FONT 8, "MS Sans Serif", 0, 0, 0x1
+BEGIN
+    CTEXT           "Establishing communication link with ECAT system.\nPlease wait...",
+                    IDC_STATIC,33,7,186,19
+    ICON            IDI_COMM_LINK_2,IDC_STATIC,7,7,21,20
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDD_ECAT_EXIT           BITMAP  DISCARDABLE     "..\\res\\ex1.bmp"
+IDD_RAW_STOP            BITMAP  DISCARDABLE     "..\\res\\STOP1.bmp"
+IDD_RUN                 BITMAP  DISCARDABLE     "..\\res\\run1.bmp"
+IDD_GND                 BITMAP  DISCARDABLE     "..\\res\\EFTgnd1.bmp"
+IDD_N                   BITMAP  DISCARDABLE     "..\\res\\EFTn1.bmp"
+IDD_N_NEG               BITMAP  DISCARDABLE     "..\\res\\EFTn3.bmp"
+IDD_N_POS               BITMAP  DISCARDABLE     "..\\res\\EFTn6.bmp"
+IDD_L1                  BITMAP  DISCARDABLE     "..\\res\\EFTl1_1.bmp"
+IDD_L1_NEG              BITMAP  DISCARDABLE     "..\\res\\EFTl1_3.bmp"
+IDD_L1_POS              BITMAP  DISCARDABLE     "..\\res\\EFTl1_6.bmp"
+IDD_L2                  BITMAP  DISCARDABLE     "..\\res\\EFTl2_1.bmp"
+IDD_L2_NEG              BITMAP  DISCARDABLE     "..\\res\\EFTl2_3.bmp"
+IDD_L2_POS              BITMAP  DISCARDABLE     "..\\res\\EFTl2_6.bmp"
+IDD_L3                  BITMAP  DISCARDABLE     "..\\res\\EFTl3_1.bmp"
+IDD_L3_NEG              BITMAP  DISCARDABLE     "..\\res\\EFTl3_3.bmp"
+IDD_L3_POS              BITMAP  DISCARDABLE     "..\\res\\EFTl3_6.bmp"
+IDD_EUT_POWER           BITMAP  DISCARDABLE     "..\\res\\EUTOFF1.bmp"
+IDD_RAW_STOP_ON         BITMAP  DISCARDABLE     "..\\res\\idd_raw_.bmp"
+IDD_RUN_ON              BITMAP  DISCARDABLE     "..\\res\\idd_run_.bmp"
+IDD_EUT_POWER_RDY       BITMAP  DISCARDABLE     "..\\res\\pwr_rdy_.bmp"
+IDD_EUT_POWER_ON        BITMAP  DISCARDABLE     "..\\res\\pwr_on.bmp"
+IDD_GND_NEG             BITMAP  DISCARDABLE     "..\\res\\dd_gnd_s.bmp"
+IDD_GND_POS             BITMAP  DISCARDABLE     "..\\res\\idd_gnd_.bmp"
+IDD_S1_NEG              BITMAP  DISCARDABLE     "..\\res\\s1_3.bmp"
+IDD_S1_POS              BITMAP  DISCARDABLE     "..\\res\\s1_6.bmp"
+IDD_S2                  BITMAP  DISCARDABLE     "..\\res\\s2_1.bmp"
+IDD_S2_NEG              BITMAP  DISCARDABLE     "..\\res\\s2_3.bmp"
+IDD_S2_POS              BITMAP  DISCARDABLE     "..\\res\\s2_6.bmp"
+IDD_S3                  BITMAP  DISCARDABLE     "..\\res\\s3_1.bmp"
+IDD_S3_NEG              BITMAP  DISCARDABLE     "..\\res\\s3_3.bmp"
+IDD_S3_POS              BITMAP  DISCARDABLE     "..\\res\\s3_6.bmp"
+IDD_S4                  BITMAP  DISCARDABLE     "..\\res\\s4_1.bmp"
+IDD_S1                  BITMAP  DISCARDABLE     "..\\res\\s1_1.bmp"
+IDD_S4_POS              BITMAP  DISCARDABLE     "..\\res\\s4_6.bmp"
+IDD_S4_NEG              BITMAP  DISCARDABLE     "..\\res\\s4_3.bmp"
+IDD_G_NEG               BITMAP  DISCARDABLE     "..\\res\\gg3.bmp"
+IDD_G_POS               BITMAP  DISCARDABLE     "..\\res\\gg6.bmp"
+IDD_G                   BITMAP  DISCARDABLE     "..\\res\\gg1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_E500DLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 376
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 328
+    END
+
+    IDD_CHOOSE_COUPLER, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 264
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_CHOOSE_EFT_MODULE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 264
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 86
+    END
+
+    IDD_LIMIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 136
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 65
+    END
+
+    IDD_AC_LIMIT, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 182
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 93
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 358
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 161
+    END
+
+    IDD_PAUSE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 180
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 124
+    END
+
+    IDD_SETUP_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 169
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 132
+    END
+
+    IDD_TEST_NAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 271
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 45
+    END
+
+    IDD_COMMENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 218
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 92
+    END
+
+    IDD_START_LOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 202
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 212
+    END
+
+    IDD_POLL, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 73
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 11
+    END
+
+    IDD_INTERLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 283
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 84
+    END
+
+    IDD_CALIBRATE, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 260
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 236
+    END
+
+    IDD_COMM_LINK_MSG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 26
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 5,31,0,0
+ PRODUCTVERSION 5,31,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Part of the ECAT software suite\0"
+            VALUE "CompanyName", "Thermo Fisher Scientific\0"
+            VALUE "FileDescription", "E500 executable\0"
+            VALUE "FileVersion", "5, 31, 0, 0\0"
+            VALUE "InternalName", "E500\0"
+            VALUE "LegalCopyright", "Copyright © 1997-2014 Thermo Fisher Scientific\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "E500.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "KeyTek ECAT SurgeWare\0"
+            VALUE "ProductVersion", "5, 31, 0, 0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

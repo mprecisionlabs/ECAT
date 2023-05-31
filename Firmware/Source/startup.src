@@ -1,0 +1,211 @@
+; The startup module for the Keytek micro board.
+
+		OPT		P=68332
+SUPER_SP	EQU		$00002000
+SIM		EQU		$FFFFFA00		;BCC M68332 System Integration Module base addr
+RAMCR		EQU		$FFFFFB00		;BCC M68332 RAM Control Module base address
+SR_VAL		EQU		$2700			;Status register initial value.
+
+
+RAMMCR		EQU		RAMCR+$00		;RAM Module Configuration Register
+RAMBAR		EQU		RAMCR+$04		;RAM Module Base Address/Status Register
+SYNCR		EQU		SIM+$04			;Clock Synthesizer Control Register
+VCO_X		EQU		$4000			;VCO Frequency Control Bit X value
+SYPCR		EQU		SIM+$20			;System Protection Control Register
+SSR		EQU		SIM+$26			;Software watchdog service register
+CSPAR		EQU		SIM+$44			;Chip Select Pin Assignment Register
+CSBARBT	EQU		SIM+$48			;Chip Select Base Boot Register
+CSORBT		EQU		SIM+$4A			;Chip Select Option Boot Register
+CSBAR0		EQU		SIM+$4C			;Chip Select 0 Base Register
+CSOR0		EQU		SIM+$4E			;Chip Select 0 Option Register
+CSBAR1		EQU		SIM+$50			;Chip Select 1 Base Register
+CSOR1		EQU		SIM+$52			;Chip Select 1 Option Register
+CSBAR2		EQU		SIM+$54			;Chip Select 2 Base Register
+CSOR2		EQU		SIM+$56			;Chip Select 2 Option Register
+CSBAR3		EQU		SIM+$58			;Chip Select 3 Base Register
+CSOR3		EQU		SIM+$5A			;Chip Select 3 Option Register
+CSBAR4		EQU		SIM+$5C			;Chip Select 4 Base Register
+CSOR4		EQU		SIM+$5E			;Chip Select 4 Option Register
+CSBAR5		EQU		SIM+$60			;Chip Select 5 Base Register
+CSOR5		EQU		SIM+$62			;Chip Select 5 Option Register
+CSBAR6		EQU		SIM+$64			;Chip Select 6 Base Register
+CSOR6		EQU		SIM+$66			;Chip Select 6 Option Register
+CSBAR7		EQU		SIM+$68			;Chip Select 7 Base Register
+CSOR7		EQU		SIM+$6A			;Chip Select 7 Option Register
+CSBAR8		EQU		SIM+$6C			;Chip Select 8 Base Register
+CSOR8		EQU		SIM+$6E			;Chip Select 8 Option Register
+CSBAR9		EQU		SIM+$70			;Chip Select 9 Base Register
+CSOR9		EQU		SIM+$72			;Chip Select 9 Option Register
+CSBAR10	EQU		SIM+$74			;Chip Select 10 Base Register
+CSOR10		EQU		SIM+$78			;Chip Select 10 Option Register
+QMCR		EQU		$FFFC00
+QPDR		EQU		$FFFC14
+QPAR		EQU		$FFFC16
+SCCR0		EQU		$FFFC08
+SCCR1		EQU		$FFFC0A
+LEDS		EQU		$040000
+LED_1		EQU		$0FE			; 1111 1110
+LED_2		EQU		$0FC			; 1111 1100
+LED_3		EQU		$0F8			; 1111 1000
+LED_BTRAP	EQU	$055				; 0101 0101
+
+INIT_CSBARBT	EQU		$08056970
+; Main ROM Address
+; Base address=080000 block size=128K
+; Both Read  AS   5wait  User SP  IRQ ALL  avec off
+
+INIT_CSBAR0	EQU		$000350FE
+; Used for the RAM Upper Byte
+; Base address=000000 block size=64K
+; Upper Write AS   3wait  User SP  IRQ7  avec off
+
+INIT_CSBAR1	EQU		$000330FE
+; Used for the RAM Lower Byte
+; Base address=000000 block size=64K
+; Lower Write AS   3wait  User SP  IRQ7  avec off
+
+INIT_CSBAR2	EQU		$000368FE
+; Read for RAM Both Bytes
+; Base address=000000 block size=64K
+; Both Read  AS   3wait  User SP  IRQ7  avec off
+
+INIT_CSBAR3	EQU		$FFF86807
+; Used for the keyboard interrupt (IRQ3)
+; Base Address=FFF800 block size=2K
+; AS - Both - Read - 0 Wait - CPU - IRQ 3 - AVEC ON
+
+INIT_CSBAR4	EQU		$05057AB0
+; Used to enable the external I/O buffers
+; Base address=050000 block size=2K
+; 
+; Both  Both AS   5wait  User SP  IRQ ALL  avec off
+
+INIT_CSBAR5	EQU		$FFF86809
+; IRQ 4 - Auto Vector
+; Base address=FFF800 block size=2K
+; Both Read  AS   0wait  CPU SP   IRQ4  avec on
+
+INIT_CSBAR6	EQU		$FFF86806
+; IRQ 3 - Auto Vector
+; Base address=FFF800 block size=2K
+; Both Read  AS   0wait  CPU SP   IRQ3  avec on
+;INIT_CSBAR6	EQU		$FFF8680D
+; Base address=FFF800 block size=2K
+; Both Read  AS   0wait  CPU SP   IRQ6  avec on
+
+INIT_CSBAR7	EQU		$05807D70
+; Front Panel board
+; Base address=058000 block size=2K
+; Both Read  AS   0wait  CPU SP   IRQ ALL  avec off
+
+INIT_CSBAR8	EQU		$05887D70
+; Used for 801-4 Interface board decoding
+; Base address=058800 block size=2K
+; off  rsvd  AS   0wait  CPU SP   IRQ ALL  avec off
+
+INIT_CSBAR9	EQU		$04037C70                                 
+; Used for internal Decode of Latches, Lights, etc.
+; Base address=040000 block size=64K
+; Both  Both DS   1wait  User SP  IRQ ALL  avec off
+
+INIT_CSBAR10	EQU		$05007D70
+; GPIB Chip
+; Base address=050000 block size=2K
+; Both  Both DS   5wait  User SP  IRQ ALL  avec off
+
+
+INIT_QMCR	EQU		$0000			;Not Int ARB no SUPV space See SIM Pg5-11
+INIT_QPDR	EQU		$0078			;See QSM.C
+INIT_QPAR	EQU		$7BFE			;See QSM.C
+INIT_SCCR0	EQU		$001B			;See SIM pg5-57 19200 Baud
+INIT_SCCR1	EQU		$000C			;See SIM pg5-58 8 data 1 stop no parity
+
+; Start Chip Select Initialization:
+
+		SECT		SETCS
+
+		XREF		ENTRY
+		XREF		_badtrap
+		XREF		_spurious
+		XDEF		INIT_CS
+
+PWR_SSP
+		DC.L		SUPER_SP
+PWR_PC
+		DC.L		INIT_CS
+INIT_CS:
+		move.l		#0,D0
+INIT_CS2:
+		move.w		#SR_VAL,SR			;Ensure status register initialized.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;		move.w		#$0006,d2			;Default SYPCR value!
+;		move.b		$00048000,d1		;Read Watchdog Override switch
+;		btst		#$0,d1
+;		bne			SKIP_SSR			;If bit 0 is '1' then DO NOT setup SSR
+;		or.w		#$00F0,d2			;Turn on software watchdog!!
+;SKIP_SSR:
+;		move.w		d2,SYPCR			;Turn off cop, DBF: BERR=16 clocks
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;       MOVE.W		#6,SYPCR			;Turn off cop, DBF: BERR=16 clocks.
+		move.w		#4,SYPCR			;BERR = 64 CLOCKS!!!!!
+		or.w		#VCO_X,SYNCR		;Now let's go to 16 Mhz!
+;		move.w		#01,RAMBAR			;Turn off internal RAM (for now)
+;		move.w		#$0055,SSR			;Service watchdog right away!
+;		move.w		#$00AA,SSR
+;
+; Enable SHOW CYCLES and allow INTERRRUPT ARBITRATION at priority 15:
+;
+		or.w		#$020F,SIM			;Enable show cycles & external arb. @ 15
+		and.w		#$DFFF,SIM			;Clear FRZBM bit= when FREEZE bus
+										;monitor continues to operate as programmed.
+
+; Set up all Chip Selects as "chip selects" in case user's have connected h/w
+; devices.  Otherwise, address lines would be toggling as program runs and
+; possibly cause the devices to be enabled!
+
+;		move.l		#$FFFFFE80,CSPAR		;9,10-8bit; 6,7,8-outputs, rest-16bit
+		move.l		#$3FFF02BF,CSPAR		;9 8-bit, rest 16-bits
+		move.l		#INIT_CSBARBT,CSBARBT
+		move.l		#INIT_CSBAR0,CSBAR0
+		move.l		#INIT_CSBAR1,CSBAR1
+		move.l		#INIT_CSBAR2,CSBAR2
+		move.l		#INIT_CSBAR3,CSBAR3
+		move.l		#INIT_CSBAR4,CSBAR4
+		move.l		#INIT_CSBAR5,CSBAR5
+		move.l		#INIT_CSBAR6,CSBAR6
+;		move.l		#INIT_CSBAR7,CSBAR7
+;		move.l		#INIT_CSBAR8,CSBAR8
+		move.l		#INIT_CSBAR9,CSBAR9
+;		move.l		#INIT_CSBAR10,CSBAR10
+
+		move.w		#INIT_QMCR,QMCR		;Setup Serial I/O to work
+		move.w		#INIT_QPDR,QPDR
+		move.w		#INIT_QPAR,QPAR
+		move.w		#INIT_SCCR0,SCCR0
+		move.w		#INIT_SCCR1,SCCR1
+;
+;  Fill up the RAM with FF values for stack watcher
+;
+		move.l		#0,a0				;Setup to start at $8000 (top o'stack)
+FILL_MEM:
+		move.l		#$FFFFFFFF,(a0)+	;Store $FFFFFFFF in memory
+		cmpa.l		#$00008000,a0		;Are we done yet?
+		blt			FILL_MEM			;No?, then continue
+		btst		#0,D0				;Check if a badtrap occurred!
+		bne			NOLED				;Jump If badtrap
+		move.b		#LED_1,LEDS
+		move.l		#$0,A0
+		move.l		#24,D0
+MOVEV:
+		move.l		#_badtrap,(A0)+
+		dbra		D0,MOVEV
+		move		#$2600,SR			;Enable any TPU functions!
+AGAIN:
+		move.l		#_spurious,$60		;Set up spurious interrupt handler
+		move.b		#LED_2,LEDS
+NOLED:
+		jsr			ENTRY
+		move.b		#LED_3,LEDS
+		jmp			AGAIN
+		END
+

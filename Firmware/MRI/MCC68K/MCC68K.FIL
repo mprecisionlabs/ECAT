@@ -1,0 +1,516 @@
+Directory        - \mcc68k
+mcc68k.exe       - Driver for compiling and linking
+cfe68k.exe       - Compiler front end - preprocessor and syntax analysis
+cbe68k.exe       - Compiler back end - optimizer and code generator
+ 
+Directory        - \mcc68k\68000
+mcc68kab.lib     - 68000 absolute library
+mcc68kpc.lib     - 68000 pc-relative library
+mcc68ka5.lib     - 68000 a5-relative library
+ 
+Directory        - \mcc68k\68000f
+mcc68kab.lib     - 68000 absolute library with 68881 support
+mcc68kpc.lib     - 68000 pc-relative library with 68881 support
+mcc68ka5.lib     - 68000 a5-relative library with 68881 support
+ 
+Directory        - \mcc68k\cpu32
+mcc68kab.lib     - CPU32 absolute library
+mcc68kpc.lib     - CPU32 pc-relative library
+mcc68ka5.lib     - CPU32 a5-relative library
+ 
+Directory        - \mcc68k\cpu32f
+mcc68kab.lib     - CPU32 absolute library with 68881 support
+mcc68kpc.lib     - CPU32 pc-relative library with 68881 support
+mcc68ka5.lib     - CPU32 a5-relative library with 68881 support
+ 
+Directory        - \mcc68k\68020
+mcc68kab.lib     - CPU32+/68020/030/EC040/EC060 absolute library
+mcc68kpc.lib     - CPU32+/68020/030/EC040/EC060 pc-relative library
+mcc68ka5.lib     - CPU32+/68020/030/EC040/EC060 a5-relative library
+ 
+Directory        - \mcc68k\68020f
+mcc68kab.lib     - CPU32+/68020/030/EC040/EC060 absolute library with 68881 
+mcc68kpc.lib     - CPU32+/68020/030/EC040/EC060 pc-relative library with 68881
+mcc68ka5.lib     - CPU32+/68020/030/EC040/EC060 a5-relative library with 68881 
+ 
+Directory        - \mcc68k\68040
+mcc68kab.lib     - 68040/68060 absolute library
+mcc68kpc.lib     - 68040/68060 pc-relative library
+mcc68ka5.lib     - 68040/68060 a5-relative library
+ 
+Directory        - \mcc68k
+assert.h         - A function to test expressions
+ctype.h          - The "is..." function declarations
+errno.h          - Error conditions
+float.h          - Floating point limits
+limits.h         - Integral type limits
+locale.h         - System environment
+math.h           - Math library function declarations
+mriext.h	 - Miscellaneous MRI extensions
+setjmp.h	 - Declarations of setjmp and long jmp
+signal.h	 - Interrupt processing functions
+stdarg.h	 - Processing variable-length argument lists
+stddef.h	 - Commonly used declarations
+stdio.h		 - Input/output functions
+stdlib.h	 - Miscellaneous utility functions
+string.h	 - The str and mem functions
+time.h		 - Time-related functions
+
+Directory        - \mcc68k\rtl\cmd
+bld_lib.bat      - DOS Batch file to build a library
+summary.bat      - DOS Batch file to summarize library test results
+test_lib.bat     - DOS Batch file to run the library test suite
+test_one.bat     - DOS Batch file to run a single library test case
+bld__1.bat       - DOS Batch file used by bld_lib.bat
+summ__1.bat      - DOS Batch file used by summary.bat
+test__1.bat      - DOS Batch file used by test_lib.bat and test_one.bat
+del_ext.exe	 - Utility used by batch files. 
+del_dir.exe	 - Utility used by batch files. 
+
+Directory        - \mcc68k\rtl\config
+a_type.h         - Library Customizer archetype file
+ 
+Directory        - \mcc68k\rtl\config\68000
+mcc68kab.h       - Library Configuration File (LCF): 68000 Absolute library
+mcc68ka5.h       - Library Configuration File (LCF): 68000 A5-relative library
+mcc68kpc.h       - Library Configuration File (LCF): 68000 PC-relative library
+ 
+Directory        - \mcc68k\rtl\config\68000f
+mcc68kab.h       - LCF: 68000 Absolute library with 68881 support
+mcc68ka5.h       - LCF: 68000 A5-relative library with 68881 support
+mcc68kpc.h       - LCF: 68000 PC-relative library with 68881 support
+ 
+Directory        - \mcc68k\rtl\config\cpu32
+mcc68kab.h       - Library Configuration File: CPU32 Absolute library
+mcc68ka5.h       - Library Configuration File: CPU32 A5-relative Library
+mcc68kpc.h       - Library Configuration File: CPU32 PC-relative Library
+ 
+Directory        - \mcc68k\rtl\config\cpu32f
+mcc68kab.h       - LCF: CPU32 Absolute library with 68881 support
+mcc68ka5.h       - LCF: CPU32 A5-relative library with 68881 support
+mcc68kpc.h       - LCF: CPU32 PC-relative library with 68881 support
+ 
+Directory        - \mcc68k\rtl\config\68020
+mcc68kab.h       - LCF: CPU32+/68020/030/EC040/EC060 Absolute library
+mcc68ka5.h       - LCF: CPU32+/68020/030/EC040/EC060 A5-relative library
+mcc68kpc.h       - LCF: CPU32+/68020/030/EC040/EC060 PC-relative library
+ 
+Directory        - \mcc68k\rtl\config\68020f
+mcc68kab.h       - LCF: CPU32+/68020/030/EC040/EC060 Absolute library with 68881
+mcc68ka5.h       - LCF: CPU32+/68020/030/EC040/EC060 A5-relative library with 68881 
+mcc68kpc.h       - LCF: CPU32+/68020/030/EC040/EC060 PC-relative library with 68881
+ 
+Directory        - \mcc68k\rtl\config\68040
+mcc68kab.h       - Library Configuration File: 68040/68060 Absolute library
+mcc68ka5.h       - Library Configuration File: 68040/68060 A5-relative library
+mcc68kpc.h       - Library Configuration File: 68040/68060 PC-relative library
+ 
+Directory        - \mcc68k\rtl\include
+assert.h         - Include file used to build custom libraries
+ctype.h          - Include file used to build custom libraries
+errno.h          - Include file used to build custom libraries
+float.h          - Include file used to build custom libraries
+limits.h         - Include file used to build custom libraries
+locale.h         - Include file used to build custom libraries
+math.h           - Include file used to build custom libraries
+mriext.h	 - Include file used to build custom libraries
+setjmp.h	 - Include file used to build custom libraries
+signal.h	 - Include file used to build custom libraries
+stdarg.h	 - Include file used to build custom libraries
+stddef.h	 - Include file used to build custom libraries
+stdio.h		 - Include file used to build custom libraries
+stdlib.h	 - Include file used to build custom libraries
+string.h	 - Include file used to build custom libraries
+time.h		 - Include file used to build custom libraries
+
+Directory        - \mcc68k\rtl\lib
+mcc68k.cmd	 - Default linker command file used to build custom libraries
+
+Directory        - \mcc68k\rtl\lib\68000
+
+Directory        - \mcc68k\rtl\lib\68000f
+
+Directory        - \mcc68k\rtl\lib\68020
+
+Directory        - \mcc68k\rtl\lib\68020f
+
+Directory        - \mcc68k\rtl\lib\68040
+
+Directory        - \mcc68k\rtl\lib\cpu32
+
+Directory        - \mcc68k\rtl\lib\cpu32f
+
+Directory        - \mcc68k\rtl\src
+_tolower.c	 - Run-time library source file
+_toupper.c	 - Run-time library source file
+abort.c		 - Run-time library source file
+abs.c		 - Run-time library source file
+add.c		 - Run-time library source file
+asm_addr.h	 - Run-time library source include file
+assert.c	 - Run-time library source file
+atexit.c	 - Run-time library source file
+atof.c		 - Run-time library source file
+atoi.c		 - Run-time library source file
+bsearch.c	 - Run-time library source file
+calloc.c	 - Run-time library source file
+ceil.c		 - Run-time library source file
+clearerr.c	 - Run-time library source file
+csys.c		 - Run-time library source file
+ctime.c		 - Run-time library source file
+ctype.c		 - Run-time library source file
+cxxconde.c	 - Run-time library source file
+cxx_targ.h       - Run-time library source include file
+dadd.c		 - Run-time library source file
+difftime.c	 - Run-time library source file
+div.c		 - Run-time library source file
+dmul.c		 - Run-time library source file
+dpk.c		 - Run-time library source file
+dvmd.c		 - Run-time library source file
+entry.c		 - Run-time library source file
+eprintf.c	 - Run-time library source file
+e_fdlibm.h       - Run-time library source include file
+e_pow.c          - Run-time library source file
+e_scalbn.c       - Run-time library source file
+fclose.c	 - Run-time library source file
+fcmpi.c		 - Run-time library source file
+feof.c		 - Run-time library source file
+ferror.c	 - Run-time library source file
+fflush.c	 - Run-time library source file
+fgetc.c		 - Run-time library source file
+fgetpos.c	 - Run-time library source file
+fgets.c		 - Run-time library source file
+filbuf.c	 - Run-time library source file
+floor.c		 - Run-time library source file
+flsbuf.c	 - Run-time library source file
+fopen.c		 - Run-time library source file
+fpk.c		 - Run-time library source file
+fprintf.c	 - Run-time library source file
+fputc.c		 - Run-time library source file
+fputs.c		 - Run-time library source file
+fread.c		 - Run-time library source file
+free.c		 - Run-time library source file
+freopen.c	 - Run-time library source file
+fscanf.c	 - Run-time library source file
+fseek.c		 - Run-time library source file
+fsetpos.c	 - Run-time library source file
+ftoa.c		 - Run-time library source file
+fwrite.c	 - Run-time library source file
+getc.c		 - Run-time library source file
+getchar.c	 - Run-time library source file
+getl.c		 - Run-time library source file
+gets.c		 - Run-time library source file
+getw.c		 - Run-time library source file
+hugeval.c	 - Run-time library source file
+i960.h           - Run-time library source include file
+inchrw.c	 - Run-time library source file
+initcopy.c	 - Run-time library source file
+ipk.c		 - Run-time library source file
+isalnum.c	 - Run-time library source file
+isalpha.c	 - Run-time library source file
+isascii.c	 - Run-time library source file
+iscntrl.c	 - Run-time library source file
+isdigit.c	 - Run-time library source file
+isgraph.c	 - Run-time library source file
+islower.c	 - Run-time library source file
+isprint.c	 - Run-time library source file
+ispunct.c	 - Run-time library source file
+isspace.c	 - Run-time library source file
+isupper.c	 - Run-time library source file
+isxdigit.c	 - Run-time library source file
+itoa.c		 - Run-time library source file
+itostr.c	 - Run-time library source file
+l_conv.c	 - Run-time library source file
+l_set.c		 - Run-time library source file
+labs.c		 - Run-time library source file
+ldiv.c		 - Run-time library source file
+lib_top.h        - Run-time library source include file
+lmul.c		 - Run-time library source file
+ltoa.c		 - Run-time library source file
+m_acos.c	 - Run-time library source file
+m_acos8.c	 - Run-time library source file
+m_acosf.c	 - Run-time library source file
+m_asin.c	 - Run-time library source file
+m_asin8.c	 - Run-time library source file
+m_asinf.c	 - Run-time library source file
+m_atan.c	 - Run-time library source file
+m_atan2.c	 - Run-time library source file
+m_atan2f.c	 - Run-time library source file
+m_atan8.c	 - Run-time library source file
+m_atanf.c	 - Run-time library source file
+m_atanh8.c	 - Run-time library source file
+m_break.i	 - Run-time library pre-processed source file
+m_breakf.i	 - Run-time library pre-processed source file
+m_cos.c		 - Run-time library source file
+m_cos8.c	 - Run-time library source file
+m_cosf.c	 - Run-time library source file
+m_cosh.c	 - Run-time library source file
+m_cosh8.c	 - Run-time library source file
+m_coshf.c	 - Run-time library source file
+m_dnorm.c	 - Run-time library source file
+m_error.c	 - Run-time library source file
+m_errorf.c	 - Run-time library source file
+m_exp.c		 - Run-time library source file
+m_exp8.c	 - Run-time library source file
+m_expf.c	 - Run-time library source file
+m_fabs.c	 - Run-time library source file
+m_fabs8.c	 - Run-time library source file
+m_fabsf.c	 - Run-time library source file
+m_fdnorm.c	 - Run-time library source file
+m_fmod.c	 - Run-time library source file
+m_fmod8.c	 - Run-time library source file
+m_fmodf.c	 - Run-time library source file
+m_frexp.c	 - Run-time library source file
+m_frexpf.c	 - Run-time library source file
+m_incl.h	 - Run-time library source include file
+m_ldexp.c	 - Run-time library source file
+m_ldexpf.c	 - Run-time library source file
+m_log.c		 - Run-time library source file
+m_log10.c	 - Run-time library source file
+m_log108.c	 - Run-time library source file
+m_log10f.c	 - Run-time library source file
+m_log8.c	 - Run-time library source file
+m_logf.c	 - Run-time library source file
+m_misc.c	 - Run-time library source file
+m_modf.c	 - Run-time library source file
+m_modff.c	 - Run-time library source file
+m_nint.c	 - Run-time library source file
+m_nintf.c	 - Run-time library source file
+m_pow.c		 - Run-time library source file
+m_powf.c	 - Run-time library source file
+m_sin.c		 - Run-time library source file
+m_sin8.c	 - Run-time library source file
+m_sinf.c	 - Run-time library source file
+m_sinh.c	 - Run-time library source file
+m_sinh8.c	 - Run-time library source file
+m_sinhf.c	 - Run-time library source file
+m_sqrt.c	 - Run-time library source file
+m_sqrt8.c	 - Run-time library source file
+m_sqrtf.c	 - Run-time library source file
+m_tan.c		 - Run-time library source file
+m_tan8.c	 - Run-time library source file
+m_tanf.c	 - Run-time library source file
+m_tanh.c	 - Run-time library source file
+m_tanh8.c	 - Run-time library source file
+m_tanhf.c	 - Run-time library source file
+malloc.c	 - Run-time library source file
+m_nf_fix.h	 - Run-time library source include file
+mblen.c		 - Run-time library source file
+mbstowcs.c	 - Run-time library source file
+mbtowc.c	 - Run-time library source file
+memccpy.c	 - Run-time library source file
+memchr.c	 - Run-time library source file
+memclr.c	 - Run-time library source file
+memcmp.c	 - Run-time library source file
+memcpy.c	 - Run-time library source file
+memmove.c	 - Run-time library source file
+memset.c	 - Run-time library source file
+mktime.c	 - Run-time library source file
+modf.c		 - Run-time library source file
+mri_fpu.h	 - Run-time library source include file
+mriclock.c	 - Run-time library source file
+mrilib.h	 - Run-time library source include file
+msg_syms.c	 - Run-time library source file
+mul.c		 - Run-time library source file
+nonlputs.c	 - Run-time library source file
+op_dadd.c	 - Run-time library source file
+op_dcmp.c	 - Run-time library source file
+op_dcmp0.c	 - Run-time library source file
+op_ddec.c	 - Run-time library source file
+op_ddiv.c	 - Run-time library source file
+op_dinc.c	 - Run-time library source file
+op_dmul.c	 - Run-time library source file
+op_dsub.c	 - Run-time library source file
+op_dswap.c	 - Run-time library source file
+op_dtof.c	 - Run-time library source file
+op_dtol.c	 - Run-time library source file
+op_dtoul.c	 - Run-time library source file
+op_fadd.c	 - Run-time library source file
+op_fcmp.c	 - Run-time library source file
+op_fcmp0.c	 - Run-time library source file
+op_fdec.c	 - Run-time library source file
+op_fdiv.c	 - Run-time library source file
+op_finc.c	 - Run-time library source file
+op_fmul.c	 - Run-time library source file
+op_fsub.c	 - Run-time library source file
+op_fswap.c	 - Run-time library source file
+op_ftod.c	 - Run-time library source file
+op_ftol.c	 - Run-time library source file
+op_ftoul.c	 - Run-time library source file
+op_ltod.c	 - Run-time library source file
+op_ltof.c	 - Run-time library source file
+op_macro.h	 - Run-time library source include file
+op_math.h	 - Run-time library source include file
+op_reent.h	 - Run-time library source include file
+op_type.h	 - Run-time library source include file
+op_ultod.c	 - Run-time library source file
+op_ultof.c	 - Run-time library source file
+outchr.c	 - Run-time library source file
+perror.c	 - Run-time library source file
+pow.c		 - Run-time library source file
+printf.c	 - Run-time library source file
+putc.c		 - Run-time library source file
+putchar.c	 - Run-time library source file
+putl.c		 - Run-time library source file
+puts.c		 - Run-time library source file
+putw.c		 - Run-time library source file
+qsort.c		 - Run-time library source file
+raise.c		 - Run-time library source file
+rand.c		 - Run-time library source file
+realloc.c	 - Run-time library source file
+remove.c	 - Run-time library source file
+rewind.c	 - Run-time library source file
+s_close.c	 - Run-time library source file
+s_creat.c	 - Run-time library source file
+s_exit.c	 - Run-time library source file
+s_ftell.c	 - Run-time library source file
+s_info.mch	 - Run-time library source include file
+s_lseek.c	 - Run-time library source file
+s_open.c	 - Run-time library source file
+s_read.c	 - Run-time library source file
+s_sbrk.c	 - Run-time library source file
+s_unlink.c	 - Run-time library source file
+s_write.c	 - Run-time library source file
+scanf.c		 - Run-time library source file
+setbuf.c	 - Run-time library source file
+setjmp.c	 - Run-time library source file
+setvbuf.c	 - Run-time library source file
+sig_tran.c	 - Run-time library source file
+sigabort.c	 - Run-time library source file
+signal.c	 - Run-time library source file
+sprintf.c	 - Run-time library source file
+sscanf.c	 - Run-time library source file
+strcat.c	 - Run-time library source file
+strchr.c	 - Run-time library source file
+strcmp.c	 - Run-time library source file
+strcoll.c	 - Run-time library source file
+strcpy.c	 - Run-time library source file
+strcspn.c	 - Run-time library source file
+strerror.c	 - Run-time library source file
+strftime.c	 - Run-time library source file
+strlen.c	 - Run-time library source file
+strncat.c	 - Run-time library source file
+strncmp.c	 - Run-time library source file
+strncpy.c	 - Run-time library source file
+strpbrk.c	 - Run-time library source file
+strrchr.c	 - Run-time library source file
+strspn.c	 - Run-time library source file
+strstr.c	 - Run-time library source file
+strtok.c	 - Run-time library source file
+strtol.c	 - Run-time library source file
+strtoul.c	 - Run-time library source file
+strxfrm.c	 - Run-time library source file
+swab.c		 - Run-time library source file
+time.c		 - Run-time library source file
+toascii.c	 - Run-time library source file
+tolower.c	 - Run-time library source file
+toupper.c	 - Run-time library source file
+ungetc.c	 - Run-time library source file
+version.c	 - Run-time library source file
+vfprintf.c	 - Run-time library source file
+vprintf.c	 - Run-time library source file
+vsprintf.c	 - Run-time library source file
+wcstombs.c	 - Run-time library source file
+wctomb.c	 - Run-time library source file
+xdiv.c		 - Run-time library source file
+xfopen.c	 - Run-time library source file
+xftoa.c		 - Run-time library source file
+xitoa.c		 - Run-time library source file
+xldiv.c		 - Run-time library source file
+xltostr.c	 - Run-time library source file
+xprintf.c	 - Run-time library source file
+xscanf.c	 - Run-time library source file
+xsfef.c		 - Run-time library source file
+zalloc.c	 - Run-time library source file
+
+Directory        - \mcc68k\rtl\test
+0assert.c	 - Run-time Library test suite source file
+0atexit.c	 - Run-time Library test suite source file
+0atof.c		 - Run-time Library test suite source file
+0atoi.c		 - Run-time Library test suite source file
+0bsearch.c	 - Run-time Library test suite source file
+0bigline.c       - Run-time Library test suite source file
+0ctype.c	 - Run-time Library test suite source file
+0dbluns.c	 - Run-time Library test suite source file
+0div.c		 - Run-time Library test suite source file
+0double.c	 - Run-time Library test suite source file
+0error.c	 - Run-time Library test suite source file
+0farnear.c	 - Run-time Library test suite source file
+0fcmp.c		 - Run-time Library test suite source file
+0fcmp2.c	 - Run-time Library test suite source file
+0fcmp3.c	 - Run-time Library test suite source file
+0fcnvrt.c	 - Run-time Library test suite source file
+0fcnvrtu.c	 - Run-time Library test suite source file
+0float.c	 - Run-time Library test suite source file
+0fopen.c	 - Run-time Library test suite source file
+0freopen.c	 - Run-time Library test suite source file
+0ftoa.c		 - Run-time Library test suite source file
+0hugeval.c	 - Run-time Library test suite source file
+0inf.c           - Run-time Library test suite source file
+0initcpy.c	 - Run-time Library test suite source file
+0inp_ff.c        - Run-time Library test suite source file
+0intop.c	 - Run-time Library test suite source file
+0intrfce.c	 - Run-time Library test suite source file
+0itoa.c		 - Run-time Library test suite source file
+0itostr.c	 - Run-time Library test suite source file
+0l_conv.c	 - Run-time Library test suite source file
+0limits.c	 - Run-time Library test suite source file
+0line_b.c        - Run-time Library test suite source file
+0line_b1.c       - Run-time Library test suite source file
+0malloc0.c	 - Run-time Library test suite source file
+0malloc1.c	 - Run-time Library test suite source file
+0malloc2.c	 - Run-time Library test suite source file
+0mblen.c	 - Run-time Library test suite source file
+0mbstowc.c	 - Run-time Library test suite source file
+0mbtowc.c	 - Run-time Library test suite source file
+0printf.c	 - Run-time Library test suite source file
+0printf1.c	 - Run-time Library test suite source file
+0putchar.c	 - Run-time Library test suite source file
+0qscanf.c	 - Run-time Library test suite source file
+0qsort.c	 - Run-time Library test suite source file
+0rand.c		 - Run-time Library test suite source file
+0setjmp.c	 - Run-time Library test suite source file
+0setloc.c	 - Run-time Library test suite source file
+0setvbuf.c	 - Run-time Library test suite source file
+0shrtop.c	 - Run-time Library test suite source file
+0signal.c	 - Run-time Library test suite source file
+0sscanf.c	 - Run-time Library test suite source file
+0stdarg.c        - Run-time Library test suite source file
+0stdarg1.c       - Run-time Library test suite source file
+0strchr.c	 - Run-time Library test suite source file
+0stringx.c	 - Run-time Library test suite source file
+0strstr.c	 - Run-time Library test suite source file
+0strtime.c	 - Run-time Library test suite source file
+0strtol.c	 - Run-time Library test suite source file
+0strtol2.c	 - Run-time Library test suite source file
+0strtoul.c	 - Run-time Library test suite source file
+0strxfrm.c	 - Run-time Library test suite source file
+0t_round.c	 - Run-time Library test suite source file
+0tctime.c	 - Run-time Library test suite source file
+0tsscanf.c	 - Run-time Library test suite source file
+0vfprint.c	 - Run-time Library test suite source file
+0vprintf.c	 - Run-time Library test suite source file
+0vsprint.c	 - Run-time Library test suite source file
+0wcstomb.c	 - Run-time Library test suite source file
+0wctomb.c	 - Run-time Library test suite source file
+lib_top.h	 - Run-time Library test suite source include file
+message.h	 - Run-time Library test suite source include file
+ok.out		 - Run-time Library test suite output reference file.
+targv.c		 - Run-time Library test suite source file
+testlib1.c       - Run-time Library test suite source file
+testlib2.c       - Run-time Library test suite source file
+testlib3.c       - Run-time Library test suite source file
+tinput.c	 - Run-time Library test suite source file
+tinput.in	 - Run-time Library test input data file
+tmath1.c	 - Run-time Library test suite source file
+tmath2.c	 - Run-time Library test suite source file
+tmath3.c	 - Run-time Library test suite source file
+tpow.c		 - Run-time Library test suite source file
+tswab.c		 - Run-time Library test suite source file
+
+Directory        - \mcc68k\tmp
+
+Directory        - \mcc68k
+sieve.c		 - Test and sample program
+mcc68k.cmd 	 - Default linker command file 
+mcc68k.fil	 - File list
+version          - Version number

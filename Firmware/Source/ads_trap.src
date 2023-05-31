@@ -1,0 +1,161 @@
+;	Microtec(R) Research Inc. 68K C Compiler 4.1E
+;	Host Operating System - MS-DOS
+
+	TTL	ads_trap.src
+;	MCC68K 4.1E   MS111590 ms0b01a
+	OPT	NOABSPCADD,E,CASE
+	NAME	ads_trap
+
+	XREF	_ADADD					; ADC_CONTROL + (bay * 0x1000) - ADC addr
+	XREF	_ACTIVE_RMS				; Active ch.struct.base(RMS_L1,RMS_L2,RMS_L3)
+	XREF	_SYNC_RISING_EDGE		; New cycle start flag
+
+	XREF	_AD_CH					; Line out channel + BIPP
+	XREF	_RMSCNT					; Cycle count
+	XREF	_RMS_N					; Num over period
+	XREF	_RMS_SUM				; RMS sum over period
+	XREF	_RMS_PEAKP				; Peak plus  over period
+	XREF	_RMS_PEAKM				; peak minus over period
+
+; RMSDATA structure field offsets
+	XREF	_OFF_ADCH
+	XREF	_OFF_ZERO				; zero offset
+	XREF	_OFF_RMSN				; public num over period
+	XREF	_OFF_RMSSUM				; public sum over period
+	XREF	_OFF_PEAKP				; peak plus  over period
+	XREF	_OFF_PEAKM				; peak minus over period
+	XREF	_OFF_PEAKMAX			; peak max over runtime
+	XREF	_OFF_PEAKMIN			; peak min over runtime
+
+; RMSDATA structures
+	XREF	_RMS_L1
+	XREF	_RMS_L2
+	XREF	_RMS_L3
+
+	SECTION code,,C
+	XDEF	_ADRMS_SRG_trap
+
+
+_ADRMS_SRG_trap:
+	movem.l		a0/a1/a2/d0/d1/d2/d3,-(sp)
+
+; adn=ECAT_MAX180Read(0);
+	movea.l		_ADADD,a0			; A0 = ADC addr
+	moveq		#0,d2
+	move.w		(a0),d2				; read value from ADC
+	andi.w		#4095,d2
+; if (adn & 0x0800) adn|=~(0x0FFF);
+	BTST		#11,D2
+	beq.s		L1
+	ori.l		#-4096,d2
+;At this time D2 holds the A/D value in a signed form form -2048 to 2047
+
+L1:
+	movea.l		_ACTIVE_RMS,a2		; A2 = active rms struct addr
+
+; RMS_N++;
+	addq.l		#1,_RMS_N
+
+; RMS_ZERO.RMS_ZERO-=(RMS_ZERO.ZEROM);
+	move.w		_OFF_ZERO,d3
+	moveq		#0,d0				;d0= 0000 0000
+	move.w		(a2,d3.w),d0		;d0= 0000 RMS_ZERO
+	ext.l		d0					;d0= SSSS RMS_ZERO
+	sub.l		d0,(a2,d3.w)		;RMS_ZERO-=RMS_ZERO/0x10000
+; RMS_ZERO.RMS_ZERO+=adn;
+	add.l		d2,(a2,d3.w)		;RMS_ZERO+=adn
+;adn=adn-RMS_zero					;RMS_ZERO now = Avg(adn)*0x10000
+	sub.l		d0,d2
+;d2 now holds the  A/D value corrected for offset
+
+; _RMS_SUM+=adn*adn;
+	move.l		d2,d0
+	muls.w		d2,d0
+	add.l		d0,_RMS_SUM
+
+; if(adn>RMS_PEAKP)
+;    RMS_PEAKP=adn;
+; peak plus
+	cmp.l		_RMS_PEAKP,d2
+	ble.s		L3
+	move.l		d2,_RMS_PEAKP
+L3:
+; if(adn<RMS_PEAKM)
+;    RMS_PEAKM=adn;
+; peak minus
+	cmp.l		_RMS_PEAKM,d2
+	bge.s		L4
+	move.l		d2,_RMS_PEAKM
+L4:
+; if new cycle
+;    (SYNC_RISING_EDGE != 0)
+	tst.l		_SYNC_RISING_EDGE
+	beq.w		L6
+
+; - Store current values in active line structure
+; - Calculate peakmax, peakmin
+; - Switch to next line
+; - Restore AD_CH
+; - Clear RMS_N,RMS_SUM, init. RMS_PEAKP, RMS_PEAKM
+
+	clr.l		_SYNC_RISING_EDGE
+	move.w		_OFF_RMSN,d3
+	move.l		_RMS_N,(a2,d3.w)	; save rms_n
+	move.w		_OFF_RMSSUM,d3
+	move.l		_RMS_SUM,(a2,d3.w)	; save rms_sum
+
+	move.l		_RMS_PEAKP,d2		; d2 = RMS_PEAKP
+	move.w		_OFF_PEAKP,d3
+	move.l		d2,(a2,d3.w)		; save PEAKP
+
+	move.w		_OFF_PEAKMAX,d3
+	cmp.l		(a2,d3.w),d2		; if peakmax < peakp
+	ble.s		L4A
+	move.l		d2,(a2,d3.w)		; then peakmax = peakp
+L4A:
+	move.l		_RMS_PEAKM,d2		; d2 = RMS_PEAKM
+	move.w		_OFF_PEAKM,d3
+	move.l		d2,(a2,d3.w)		; save PEAKM
+	move.w		_OFF_PEAKMIN,d3
+	cmp.l		(a2,d3.w),d2		; if peakmin > peakm
+	bge.s		L4B
+	move.l		d2,(a2,d3.w)		; then peakmin = peakm
+;Active line values are saved now
+
+L4B:
+	cmpa.l		#_RMS_L1,a2
+	bne.s		L5A
+	lea.l		_RMS_L2,a2			; A2 = _RMS_L2
+	bra.s		L5C
+L5A:
+	cmpa.l		#_RMS_L2,a2
+	bne.s		L5B
+	lea.l		_RMS_L3,a2			; A2 = _RMS_L3
+L5C:
+	move.w		_OFF_ADCH,d3
+	tst.w		(a2,d3.w)
+	bne.s		L5
+L5B:
+	lea.l		_RMS_L1,a2			; A2 = _RMS_L1
+L5:
+	move.l		a2,_ACTIVE_RMS		; A2 = rms struct addr
+	addq.l		#1,_RMSCNT			; cycle_cnt++	 (L1->L2)
+;A2 & ACTIVE_RMS now hold adress of new line structure
+	move.w		_OFF_ADCH,d3
+	move.w		(a2,d3.w),_AD_CH	; new AD_CH
+;New line values are restored now
+
+	clr.l		_RMS_N
+	clr.l		_RMS_SUM			; clear  RMS_N,RMS_SUM
+	move.l		#-10000,_RMS_PEAKP
+	move.l		#10000,_RMS_PEAKM	; init RMS_PEAKP, RMS_PEAKM
+L6:
+; Start the next conversion (AD_CH=BIPP+chan.num)
+	move.w		_AD_CH,(a0)
+
+;return;
+	movem.l		(sp)+,a0/a1/a2/d0/d1/d2/d3
+	rte
+	XDEF	_ADRMS_SRG_END
+_ADRMS_SRG_END:
+	END

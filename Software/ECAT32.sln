@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E500", "E500\E500.vcproj", "{89948F2C-885D-46D8-AA58-832E89B45381}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQFWare", "PQFWare\PQFWare.vcproj", "{C0D70B21-177C-4A35-AD7A-DEFEAA36DA9E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "e400", "E400\e400.vcproj", "{14DE7545-BCB9-44F6-B4AA-BC5582E7196F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89948F2C-885D-46D8-AA58-832E89B45381}.Debug|Win32.ActiveCfg = Debug|Win32
+		{89948F2C-885D-46D8-AA58-832E89B45381}.Debug|Win32.Build.0 = Debug|Win32
+		{89948F2C-885D-46D8-AA58-832E89B45381}.Release|Win32.ActiveCfg = Release|Win32
+		{89948F2C-885D-46D8-AA58-832E89B45381}.Release|Win32.Build.0 = Release|Win32
+		{C0D70B21-177C-4A35-AD7A-DEFEAA36DA9E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0D70B21-177C-4A35-AD7A-DEFEAA36DA9E}.Debug|Win32.Build.0 = Debug|Win32
+		{C0D70B21-177C-4A35-AD7A-DEFEAA36DA9E}.Release|Win32.ActiveCfg = Release|Win32
+		{C0D70B21-177C-4A35-AD7A-DEFEAA36DA9E}.Release|Win32.Build.0 = Release|Win32
+		{14DE7545-BCB9-44F6-B4AA-BC5582E7196F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{14DE7545-BCB9-44F6-B4AA-BC5582E7196F}.Debug|Win32.Build.0 = Debug|Win32
+		{14DE7545-BCB9-44F6-B4AA-BC5582E7196F}.Release|Win32.ActiveCfg = Release|Win32
+		{14DE7545-BCB9-44F6-B4AA-BC5582E7196F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

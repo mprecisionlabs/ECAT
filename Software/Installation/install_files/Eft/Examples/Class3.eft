@@ -1,0 +1,16 @@
+E400:Name:
+Coupling:Coupler:AC
+Coupling:Standard
+Voltage:Fixed 2000 V 
+Polarity:Alternate 1 each
+Units:mSec
+Frequency:Fixed 2500 Hz
+Period:Fixed 300 ms
+Phase:Fixed 0 dg
+Duration:Fixed 15 mS
+Repeat:1
+E400:Wait time  5 Seconds 
+E400:Duration time  1 Minute  
+E400:EUT power:OFF 
+E400:Phase Mode Period
+E400:Order:Coupling,Polarity

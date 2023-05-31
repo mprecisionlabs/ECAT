@@ -1,0 +1,27 @@
+TITLE		KeyTek 1024K FLASH Memory Controller
+PATTERN		GOOD
+REVISION	B
+AUTHOR		James Murphy
+COMPANY		KeyTek Instrument Corp
+DATE			July 6, 1992
+
+; This GAL will allow the MC68332 microprocessor to boot up with 512K size
+; EPROMs installed.  Also, FLASH programming is supported by this GAL.
+
+
+CHIP GOOD PAL16V8
+;Pin #1      2      3      4      5      6      7      8      9      10
+      LCLWR  A16    CSBOOT RDWR   DB0    DB1    DB2    DB3    DB4    GND
+
+;Pin #11     12     13     14     15     16     17     18     19     20
+      DB5    PGM    CE     OE     VPRG   JMP    XXX1   WREN   XXX3   VCC
+
+EQUATIONS
+PGM	= CSBOOT + RDWR + /WREN
+CE	= GND
+OE	= CSBOOT + /RDWR
+VPRG	:= /DB0
+JMP	= A16
+XXX1	:= DB0
+WREN	:= DB1
+XXX3	:= DB2

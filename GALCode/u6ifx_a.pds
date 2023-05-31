@@ -1,0 +1,23 @@
+TITLE		KeyTek Interface Board ADC Controller
+PATTERN		GOOD
+REVISION	A
+AUTHOR		Paul Breed
+COMPANY		KeyTek Instrument Corp
+DATE			July 7, 1992
+
+; This GAL is used to control the MAXIM ADC on all interface boards
+
+
+CHIP GOOD PAL16V8
+;Pin #1      2      3      4      5      6      7      8      9      10
+      CLK    NWR    NRD    I3     I4     I5     I6     I7     I8     GND
+
+;Pin #11     12     13     14     15     16     17     18     19     20
+      I9     NAWR   NARD   NACS   ACLK   F4     F5     F6     F7     VCC
+
+EQUATIONS
+NARD	= NRD
+NAWR	= NWR
+NACS	= NRD * NWR
+ACLK	:= (F7 :+: ACLK)
+F7	:= (/F7)
